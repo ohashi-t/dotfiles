@@ -25,11 +25,17 @@ set splitright
 set incsearch
 set ignorecase
 set smartcase
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
-nnoremap "\<Space>" <Nop>
-nnoremap <Leader>+0 gt
-nnoremap <Leader>+9 gT
+noremap <Leader>0 gt
+noremap <Leader>9 gT
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
+
+inoremap <Leader> <Space>
+
 nnoremap / /\v
 nnoremap <Leader>v V
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
