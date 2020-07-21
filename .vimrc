@@ -33,14 +33,19 @@ noremap gk k
 nnoremap / /\v
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
-nnoremap <Space> <Nop>
 let g:mapleader = "\<Space>"
+nnoremap <Leader> <Nop>
 noremap <Leader>0 gt
 noremap <Leader>9 gT
 nnoremap <Leader>v V
+nnoremap <Leader>h <C-u>
+nnoremap <Leader>j <C-f>
+nnoremap <Leader>k <C-b>
+nnoremap <Leader>l <C-d>
+nnoremap <C-b> <Nop>
 
-nnoremap s <Nop>
 let g:mapleader = "s"
+nnoremap <Leader> <Nop>
 nmap <Leader>s [ss]
 noremap [ss]j "*p
 
