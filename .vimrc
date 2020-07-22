@@ -26,6 +26,13 @@ set incsearch
 set ignorecase
 set smartcase
 
+noremap <Down> <Nop>
+noremap <Up> <Nop>
+noremap <Right> <Nop>
+noremap <Left> <Nop>
+inoremap <BS> <Nop>
+inoremap <CR> <Nop>
+
 noremap j gj
 noremap gj j
 noremap k gk
@@ -35,6 +42,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
+nmap <Leader><Leader> [~_~]
 noremap <Leader>0 gt
 noremap <Leader>9 gT
 nnoremap <Leader>v V
@@ -46,7 +54,7 @@ nnoremap <C-b> <Nop>
 
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
-nmap <Leader>s [ss]
-noremap [ss]j "*p
+nmap <Leader><Leader> [~_~]
+noremap [~_~]j "*p
 
 syntax on
