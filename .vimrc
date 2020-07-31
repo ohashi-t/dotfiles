@@ -1,3 +1,31 @@
+if &compatible
+  set nocompatible
+endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+ 
+  let s:toml_dir  =  '~/.vim/rc' 
+  let s:toml      = s:toml_dir . '/dein.toml'
+  let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
+  
+  " tomlファイルをキャッシュしておくための記述
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  call dein#end()
+  call dein#save_state()
+endif
+
 filetype plugin indent on
 
 " settings
@@ -25,11 +53,16 @@ set splitright
 set incsearch
 set ignorecase
 set smartcase
+set helplang=ja
 
 noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
 noremap <Left> <Nop>
+inoremap <Down> <C-l>
+inoremap <Up> <Nop>
+inoremap <Right> <Nop>
+inoremap <Left> <Nop>
 inoremap <BS> <Nop>
 inoremap <CR> <Nop>
 
@@ -50,7 +83,8 @@ nnoremap <Leader>h <C-u>
 nnoremap <Leader>j <C-f>
 nnoremap <Leader>k <C-b>
 nnoremap <Leader>l <C-d>
-nnoremap <C-b> <Nop>
+noremap <Leader><C-l> <C-l>
+noremap <C-l> <Nop>
 
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
