@@ -5,6 +5,8 @@ link:
 	ln -s $(TOP_DIR)/.zshrc ~/.zshrc
 	ln -s $(TOP_DIR)/.tmux.conf ~/.tmux.conf
 	ln -s $(TOP_DIR)/.irbrc ~/.irbrc
+	ln -s $(TOP_DIR)/config.fish ~/.config/fish/config.fish
+	ln -s $(TOP_DIR)/fish_variables ~/.config/fish/fish_variables
 
 clean:
 	rm -f ~/.vimrc
@@ -12,3 +14,5 @@ clean:
 	rm -f ~/.zshrc
 	rm -f ~/.tmux.conf
 	rm -f ~/.irbrc
+	rm -f ~/.config/fish/config.fish
+	rm -f ~/.config/fish/fish_variables
