@@ -8,6 +8,7 @@ link:
 	ln -s $(TOP_DIR)/config.fish ~/.config/fish/config.fish
 	ln -s $(TOP_DIR)/fish_variables ~/.config/fish/fish_variables
 	ln -s $(TOP_DIR)/karabiner.json ~/.config/karabiner/karabiner.json
+	ln -s $(TOP_DIR)/init.vim ~/.config/nvim/init.vim
 
 clean:
 	rm -f ~/.vimrc
@@ -18,3 +19,4 @@ clean:
 	rm -f ~/.config/fish/config.fish
 	rm -f ~/.config/fish/fish_variables
 	rm -f ~/.config/karabiner/karabiner.json
+	rm -f ~/.config/nvim/init.vim
