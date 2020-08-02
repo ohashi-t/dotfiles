@@ -1,5 +1,6 @@
 TOP_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 link:
+	ln -s $(TOP_DIR)/man.conf ~/.man.conf
 	ln -s $(TOP_DIR)/.vimrc ~/.vimrc
 	ln -s $(TOP_DIR)/.ideavimrc ~/.ideavimrc
 	ln -s $(TOP_DIR)/.zshrc ~/.zshrc
@@ -11,6 +12,7 @@ link:
 	ln -s $(TOP_DIR)/init.vim ~/.config/nvim/init.vim
 
 clean:
+	rm -f ~/.man.conf
 	rm -f ~/.vimrc
 	rm -f ~/.ideavimrc
 	rm -f ~/.zshrc
