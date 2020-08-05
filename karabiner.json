@@ -134,7 +134,7 @@
                         "key_code": "left_command"
                     },
                     "to": {
-                        "key_code": "left_shift"
+                        "key_code": "spacebar"
                     }
                 },
                 {
@@ -150,7 +150,7 @@
                         "key_code": "right_command"
                     },
                     "to": {
-                        "key_code": "right_shift"
+                        "key_code": "spacebar"
                     }
                 },
                 {
@@ -159,6 +159,14 @@
                     },
                     "to": {
                         "key_code": "right_command"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "spacebar"
+                    },
+                    "to": {
+                        "key_code": "right_shift"
                     }
                 }
             ],
