@@ -16,7 +16,6 @@ if dein#load_state('~/.cache/dein')
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
