@@ -1,4 +1,14 @@
-TOP_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+TOP_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST)))
+
+
+INSTALL_TARGETS +=
+FISH_INSTALL_TARGETS +=
+
+CLEAN_TARGETS +=
+FISH_CLEAN_TARGETS +=
+
+-include $(TOP_DIR)/*/Makefile
+
 link:
 	ln -s $(TOP_DIR)/man.conf ~/.man.conf
 	ln -s $(TOP_DIR)/.vimrc ~/.vimrc
