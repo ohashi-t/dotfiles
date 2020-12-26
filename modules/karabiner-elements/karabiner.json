@@ -131,14 +131,6 @@
                 },
                 {
                     "from": {
-                        "key_code": "left_command"
-                    },
-                    "to": {
-                        "key_code": "spacebar"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "left_shift"
                     },
                     "to": {
