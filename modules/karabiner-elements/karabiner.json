@@ -150,7 +150,7 @@
                         "key_code": "right_shift"
                     },
                     "to": {
-                        "key_code": "right_command"
+                        "key_code": "escape"
                     }
                 },
                 {
@@ -159,6 +159,14 @@
                     },
                     "to": {
                         "key_code": "right_shift"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "left_command"
+                    },
+                    "to": {
+                        "key_code": "spacebar"
                     }
                 }
             ],
