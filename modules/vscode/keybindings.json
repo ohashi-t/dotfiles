@@ -42,7 +42,11 @@
         "when": "listFocus && !inputFocus"
     },
     {
-        "key": "cmd+y",
+        "key": "cmd+h cmd+y",
         "command": "explorer.newFile"
+    },
+    {
+        "key": "cmd+h cmd+u",
+        "command": "workbench.action.closeSidebar"
     }
 ]
