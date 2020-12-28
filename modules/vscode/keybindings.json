@@ -40,5 +40,9 @@
         "key": "ctrl+j",
         "command": "list.select",
         "when": "listFocus && !inputFocus"
+    },
+    {
+        "key": "cmd+y",
+        "command": "explorer.newFile"
     }
 ]
