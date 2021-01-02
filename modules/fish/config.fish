@@ -41,5 +41,10 @@ function fish_user_key_bindings
 end
 
 set -x PATH $HOME/.npm-global/bin $PATH
-set -x PATH $HOME/.anyenv/bin $PATH
-eval (anyenv init - | source)
+
+# ログインシェルの場合のみ
+# ex.)bashから起動した場合、bash_profileにanyenvに関する記述が既にあるとエラーになる
+if [ "$SHELL" = "/usr/local/bin/fish" ]
+    set -x PATH $HOME/.anyenv/bin $PATH
+    eval (anyenv init - | source)
+end
