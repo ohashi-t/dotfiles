@@ -134,15 +134,7 @@
                         "key_code": "left_shift"
                     },
                     "to": {
-                        "key_code": "left_command"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "right_command"
-                    },
-                    "to": {
-                        "key_code": "spacebar"
+                        "key_code": "vk_none"
                     }
                 },
                 {
