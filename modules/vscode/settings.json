@@ -1,5 +1,11 @@
 {
     "editor.tabSize": 2,
     "files.autoSave": "afterDelay",
-    "window.zoomLevel": 1
+    "ruby.intellisense": "rubyLocate",
+    "editor.fontSize": 13,
+    "workbench.statusBar.visible": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "window.zoomLevel": 0
 }
