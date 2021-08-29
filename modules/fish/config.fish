@@ -48,3 +48,5 @@ if [ "$SHELL" = "/usr/local/bin/fish" ]
     set -x PATH $HOME/.anyenv/bin $PATH
     eval (anyenv init - | source)
 end
+
+set -x PATH $HOME/.cargo/bin $PATH
