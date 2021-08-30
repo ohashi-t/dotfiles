@@ -1,1 +1,4 @@
 karabiner-elements
+biscuit
+bitwarden
+alfred
