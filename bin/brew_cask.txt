@@ -2,3 +2,4 @@ karabiner-elements
 biscuit
 bitwarden
 alfred
+cheatsheet
