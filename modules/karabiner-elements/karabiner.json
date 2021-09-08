@@ -97,15 +97,44 @@
                         ]
                     },
                     {
-                        "description": "escキーを押したときに、英数キーも送信する（vim用）",
+                        "description": "Ctrl+j -> return_or_enter",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "escape"
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "return_or_enter"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+cを押したときに、英数キーも送信",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": [
+                                            "control"
+                                        ]
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
@@ -116,7 +145,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+cを押したときに、escキーと英数キーを送信する",
+                        "description": "Ctrl+[を押したときに、英数キーも送信する（vim用） (rev 2)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -129,7 +158,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "c",
+                                    "key_code": "open_bracket",
                                     "modifiers": {
                                         "mandatory": [
                                             "control"
@@ -138,15 +167,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "c",
-                                        "modifiers": {
-                                            "mandatory": [
-                                                "control"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "key_code": "escape"
+                                        "key_code": "open_bracket",
+                                        "modifiers": [
+                                            "control"
+                                        ]
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
@@ -173,7 +197,10 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "close_bracket",
+                                        "modifiers": [
+                                            "control"
+                                        ]
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
