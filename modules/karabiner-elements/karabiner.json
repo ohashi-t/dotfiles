@@ -97,27 +97,6 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+j -> return_or_enter",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Ctrl+cを押したときに、英数キーも送信",
                         "manipulators": [
                             {
@@ -204,6 +183,30 @@
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+j -> return_or_enter",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter"
                                     }
                                 ],
                                 "type": "basic"

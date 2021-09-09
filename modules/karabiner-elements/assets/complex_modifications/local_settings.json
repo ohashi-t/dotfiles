@@ -119,6 +119,9 @@
             "modifiers": {
               "mandatory": [
                 "control"
+              ],
+              "optional": [
+                  "any"
               ]
             }
           },
