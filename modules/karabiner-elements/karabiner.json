@@ -97,33 +97,6 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+cを押したときに、英数キーも送信",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "c",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Ctrl+[を押したときに、英数キーも送信する（vim用） (rev 2)",
                         "manipulators": [
                             {
@@ -207,6 +180,36 @@
                                 "to": [
                                     {
                                         "key_code": "return_or_enter"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+cを押したときに、英数キーも送信",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "c",
+                                        "modifiers": [
+                                            "control"
+                                        ]
+                                    },
+                                    {
+                                        "key_code": "escape"
+                                    },
+                                    {
+                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"
