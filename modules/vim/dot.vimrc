@@ -1,34 +1,34 @@
-let g:python3_host_prog = '/usr/local/bin/python3'
-if &compatible
-  set nocompatible
-endif
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-  let s:toml_dir  =  '~/.vim/rc' 
-  let s:toml      = s:toml_dir . '/dein.toml'
-  let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
-
-  " tomlファイルをキャッシュしておくための記述
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
+"let g:python3_host_prog = '/usr/local/bin/python3'
+"if &compatible
+"  set nocompatible
+"endif
+"" Add the dein installation directory into runtimepath
+"set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+"
+"if dein#load_state('~/.cache/dein')
+"  call dein#begin('~/.cache/dein')
+"
+"  let s:toml_dir  =  '~/.vim/rc' 
+"  let s:toml      = s:toml_dir . '/dein.toml'
+"  let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
+"
+"  " tomlファイルをキャッシュしておくための記述
+"  call dein#load_toml(s:toml,      {'lazy': 0})
+"  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+"
+"  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+"  if !has('nvim')
+"    call dein#add('roxma/nvim-yarp')
+"    call dein#add('roxma/vim-hug-neovim-rpc')
+"  endif
+"
+"  call dein#end()
+"  call dein#save_state()
+"endif
+"
+"if dein#check_install()
+"  call dein#install()
+"endif
 
 filetype plugin indent on
 
@@ -63,22 +63,22 @@ noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
 noremap <Left> <Nop>
-inoremap <Down> <C-l>
+inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 inoremap <Left> <Nop>
-inoremap <BS> <Nop>
+inoremap <BS> <C-l>
 
-noremap j gj
-noremap gj j
-noremap k gk
-noremap gk k
-noremap 0 g0
-noremap g0 0
-noremap ^ g^
-noremap g^ ^
-noremap $ g$
-noremap g$ $
+"noremap j gj
+"noremap gj j
+"noremap k gk
+"noremap gk k
+"noremap 0 g0
+"noremap g0 0
+"noremap ^ g^
+"noremap g^ ^
+"noremap $ g$
+"noremap g$ $
 
 nnoremap / /\v
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>

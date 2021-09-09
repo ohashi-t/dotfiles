@@ -7,5 +7,7 @@
     "files.exclude": {
         "**/.git": false
     },
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ohashi_t/.config/nvim/init.vim"
 }

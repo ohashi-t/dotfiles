@@ -50,3 +50,9 @@ if [ "$SHELL" = "/usr/local/bin/fish" ]
 end
 
 set -x PATH $HOME/.cargo/bin $PATH
+
+set -Ux PYENV_ROOT $HOME/.pyenv
+set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+status is-interactive; and pyenv init --path | source
+pyenv init - | source
