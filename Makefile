@@ -14,3 +14,7 @@ install: $(INSTALL_TARGETS)
 
 .PHONY: clean
 clean: $(CLEAN_TARGETS)
+
+.PHONY: karabiner-import
+karabiner-import:
+	cp $(KARABINER_DIR)/karabiner.json $(SELF_KARABINER_DIR)/karabiner.json
