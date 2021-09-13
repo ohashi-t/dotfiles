@@ -41,11 +41,14 @@ function fish_user_key_bindings
 end
 
 function gch
-    git br | peco | xargs git checkout
+    git br | peco --layout=bottom-up | xargs git checkout
 end
 
 function gbrD
-    set -l delete_branch (git br | peco | xargs)
+    set -l delete_branch (git br | peco --layout=bottom-up | xargs)
+#    if [ -z "$delete_branch" ]; then
+#        return 1
+#    fi
     echo "Are you sure you delete $delete_branch (y/n)"
     set -l confirm (read)
     switch "$confirm"
