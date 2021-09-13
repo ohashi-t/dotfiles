@@ -40,6 +40,18 @@ function fish_user_key_bindings
     bind \cq peco_z
 end
 
+function gch
+    git br | peco | xargs git checkout
+end
+
+function gbrD
+    git br | peco | xargs git branch -D
+end
+
+function gbr
+    git br
+end
+
 set -x PATH $HOME/.npm-global/bin $PATH
 
 # ログインシェルの場合のみ
