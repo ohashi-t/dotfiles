@@ -45,7 +45,17 @@ function gch
 end
 
 function gbrD
-    git br | peco | xargs git branch -D
+    set -l delete_branch (git br | peco | xargs)
+    echo "Are you sure you delete $delete_branch (y/n)"
+    set -l confirm (read)
+    switch "$confirm"
+    case "y"
+        git branch -D "$delete_branch"
+    case "n"
+        echo "delete branch cancelled..."
+    case '*'
+        echo "please select y or n keys."
+    end
 end
 
 function gbr
