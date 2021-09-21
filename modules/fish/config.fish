@@ -10,6 +10,11 @@ end
 # alias
 alias man 'man -C ~/.man.conf'
 alias cdd 'cd ~/Desktop'
+alias gbr 'git branch'
+alias gst 'git status'
+alias gco 'git commit'
+alias gdf 'git diff'
+alias gad 'git add'
 function peco_z
     set -l query (commandline)
     if test -n $query
@@ -59,10 +64,6 @@ function gbrD
     case '*'
         echo "please select y or n keys."
     end
-end
-
-function gbr
-    git br
 end
 
 set -x PATH $HOME/.npm-global/bin $PATH
