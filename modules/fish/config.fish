@@ -15,6 +15,7 @@ alias gst 'git status'
 alias gco 'git commit'
 alias gdf 'git diff'
 alias gad 'git add'
+alias glg 'git log'
 function peco_z
     set -l query (commandline)
     if test -n $query
