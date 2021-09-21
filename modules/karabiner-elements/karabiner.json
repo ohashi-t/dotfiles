@@ -410,6 +410,30 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "f20 -> ctrl + shift + alt + cmd",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f20",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "right_shift",
+                                    "modifiers": [
+                                        "right_command",
+                                        "right_control",
+                                        "right_option"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -458,6 +482,16 @@
                         },
                         {
                             "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "f20"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
                                 "key_code": "right_shift"
                             },
                             "to": [
@@ -473,16 +507,6 @@
                             "to": [
                                 {
                                     "key_code": "right_shift"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f20"
                                 }
                             ]
                         }
