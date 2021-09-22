@@ -6,6 +6,12 @@ SETUVAR FZF_LEGACY_KEYBINDINGS:1
 SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
+SETUVAR --export PYENV_ROOT:/Users/to/\x2epyenv
+SETUVAR ZO_CMD:zo
+SETUVAR Z_CMD:z
+SETUVAR Z_DATA:/Users/to/\x2elocal/share/z/data
+SETUVAR Z_DATA_DIR:/Users/to/\x2elocal/share/z
+SETUVAR Z_EXCLUDE:\x5e/Users/to\x24
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:93a1a1
 SETUVAR fish_color_cancel:\x2dr
@@ -36,3 +42,4 @@ SETUVAR fish_pager_color_completion:green
 SETUVAR fish_pager_color_description:B3A06D
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_user_paths:/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin

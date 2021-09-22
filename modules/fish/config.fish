@@ -16,6 +16,20 @@ alias gco 'git commit'
 alias gdf 'git diff'
 alias gad 'git add'
 alias glg 'git log'
+
+function peco_select_history
+    if test (count $argv) = 0
+        set peco_flags
+    else
+        set peco_flags --query "$argv"
+    end
+    history|peco $peco_flags|read foo
+    if [ $foo ]
+        commandline $foo
+    else
+        commandline ''
+    end
+end
 function peco_z
     set -l query (commandline)
     if test -n $query
@@ -44,6 +58,7 @@ function fish_user_key_bindings
     bind \cr 'peco_select_history (commandline -b)'
     bind \co peco_ghq
     bind \cq peco_z
+    bind \cg fzf
 end
 
 function gch
@@ -52,9 +67,9 @@ end
 
 function gbrD
     set -l delete_branch (git br | peco --layout=bottom-up | xargs)
-#    if [ -z "$delete_branch" ]; then
-#        return 1
-#    fi
+    if [ -z "$delete_branch" ]; then
+        return 1
+    end
     echo "Are you sure you delete $delete_branch (y/n)"
     set -l confirm (read)
     switch "$confirm"
