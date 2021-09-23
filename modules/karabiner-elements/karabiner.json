@@ -468,10 +468,10 @@
                         },
                         {
                             "from": {
-                                "key_code": "left_option"
+                                "key_code": "right_option"
                             },
                             "to": {
-                                "key_code": "fn"
+                                "key_code": "f20"
                             }
                         },
                         {
@@ -487,7 +487,7 @@
                                 "key_code": "right_shift"
                             },
                             "to": {
-                                "key_code": "escape"
+                                "key_code": "fn"
                             }
                         },
                         {
