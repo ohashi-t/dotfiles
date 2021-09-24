@@ -17,6 +17,8 @@ alias gdf 'git diff'
 alias gad 'git add'
 alias glg 'git log'
 
+abbr -a bundle "spring stop;bundle"
+
 function peco_select_history
     if test (count $argv) = 0
         set peco_flags
