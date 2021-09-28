@@ -16,6 +16,8 @@ alias gco 'git commit'
 alias gdf 'git diff'
 alias gad 'git add'
 alias glg 'git log'
+alias txks 'tmux kill-server'
+alias txa 'tmux a'
 
 abbr -a bundle "spring stop;bundle"
 
