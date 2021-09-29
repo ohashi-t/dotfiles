@@ -65,6 +65,11 @@ function fish_user_key_bindings
     bind \cg fzf
 end
 
+# 右端の時刻表示を無効にする
+function fish_right_prompt
+    echo
+end
+
 function gch
     git br | peco --layout=bottom-up | xargs git checkout
 end
