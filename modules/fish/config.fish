@@ -91,6 +91,20 @@ function gbrD
     end
 end
 
+function peco_cd_current_dir
+    cd (ls -l | grep ^d > /dev/null; and ls -d */ | peco; or ls -d)
+end
+
+function peco_nvim_current_files
+    ls -F | grep -v "/" | peco | xargs nvim    
+
+end
+
+function pcp
+    set peco_commands peco_cd_current_dir\npeco_nvim_current_files
+    eval (echo "$peco_commands" | peco)
+end
+
 set -x PATH $HOME/.npm-global/bin $PATH
 
 # ログインシェルの場合のみ
@@ -103,7 +117,9 @@ end
 set -x PATH $HOME/.cargo/bin $PATH
 
 set -Ux PYENV_ROOT $HOME/.pyenv
-set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+# fish_user_pathsに設定したらダメっぽい
+# set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+set -x PATH $PYENV_ROOT/bin $PATH
 
 status is-interactive; and pyenv init --path | source
 pyenv init - | source

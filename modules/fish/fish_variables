@@ -13,6 +13,7 @@ SETUVAR Z_DATA:/Users/to/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/Users/to/\x2elocal/share/z
 SETUVAR Z_EXCLUDE:\x5e/Users/to\x24
 SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_bundle:spring\x20stop\x3bbundle
 SETUVAR fish_color_autosuggestion:93a1a1
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:586e75
@@ -42,4 +43,3 @@ SETUVAR fish_pager_color_completion:green
 SETUVAR fish_pager_color_description:B3A06D
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin\x1e/Users/to/\x2eanyenv/envs/pyenv/bin
