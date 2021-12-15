@@ -19,8 +19,6 @@ alias glg 'git log'
 alias txks 'tmux kill-server'
 alias txa 'tmux a'
 
-abbr -a bundle "spring stop;bundle"
-
 function peco_select_history
     if test (count $argv) = 0
         set peco_flags
@@ -105,6 +103,9 @@ function pcp
     eval (echo "$peco_commands" | peco)
 end
 
+set -x DISABLE_SPRING 1
+set -x DISABLE_DATABASE_ENVIRONMENT_CHECK 1
+
 set -x PATH $HOME/.npm-global/bin $PATH
 
 # ログインシェルの場合のみ
@@ -120,6 +121,7 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 # fish_user_pathsに設定したらダメっぽい
 # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 set -x PATH $PYENV_ROOT/bin $PATH
+set -x PATH $HOME/.npm-global/bin $PATH
 
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
