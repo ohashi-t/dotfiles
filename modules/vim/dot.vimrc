@@ -46,7 +46,7 @@ set wrapscan
 set hlsearch
 set showcmd
 set title
-set number relativenumber
+set relativenumber
 set cursorline
 set cursorcolumn
 set nofoldenable

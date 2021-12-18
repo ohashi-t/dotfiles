@@ -117,7 +117,7 @@ end
 
 set -x PATH $HOME/.cargo/bin $PATH
 
-set -Ux PYENV_ROOT $HOME/.pyenv
+set -x PYENV_ROOT $HOME/.pyenv
 # fish_user_pathsに設定したらダメっぽい
 # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 set -x PATH $PYENV_ROOT/bin $PATH
