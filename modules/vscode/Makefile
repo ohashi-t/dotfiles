@@ -1,4 +1,4 @@
-VSCODE_DIR = ~/Library/Application\ Support/Code/User
+VSCODE_DIR = ~/.vscode
 SELF_VSCODE_DIR = $(MODULE_DIR)/vscode
 
 CLEAN_TARGETS += vscode-clean
