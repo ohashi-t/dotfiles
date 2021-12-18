@@ -1,6 +1,5 @@
 {
     "editor.tabSize": 2,
-    "files.autoSave": "afterDelay",
     "ruby.intellisense": "rubyLocate",
     "editor.fontSize": 13,
     "workbench.statusBar.visible": true,
@@ -9,5 +8,9 @@
     },
     "window.zoomLevel": 0,
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ohashi_t/.config/nvim/init.vim"
+    "vscode-neovim.neovimInitVimPaths.darwin": "/Users/ohashi_t/.config/nvim/init.vim",
+    "files.watcherExclude": {
+        "**": true
+    },
+    "files.autoSave": "afterDelay"
 }
