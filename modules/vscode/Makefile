@@ -1,4 +1,4 @@
-VSCODE_DIR = ~/.vscode
+VSCODE_DIR = /usr/local/Homebrew/.vscode
 SELF_VSCODE_DIR = $(MODULE_DIR)/vscode
 
 CLEAN_TARGETS += vscode-clean
