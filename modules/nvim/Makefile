@@ -1,17 +1,36 @@
 NVIM_DIR = ~/.config/nvim
+NVIM_PLUGINS_DIR = $(NVIM_DIR)/plugins
+NVIM_CACHE_DIR = ~/.cache/dein
 SELF_NVIM_DIR = $(MODULE_DIR)/nvim
+SELF_NVIM_PLUGINS_DIR = $(SELF_NVIM_DIR)/plugins
+
+NVIM_DEIN_URL = https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
 
 CLEAN_TARGETS += nvim-clean
 INSTALL_TARGETS += nvim-install
 
 .PHONY: nvim-clean
 nvim-clean:
-	rm -rf $(NVIM_DIR)/init.vim
-	rm -rf $(NVIM_DIR)/dein.toml
-	rm -rf $(NVIM_DIR)/dein_lazy.toml
+	rm -rf $(NVIM_DIR)
 
 .PHONY: nvim-install
 nvim-install:
+	mkdir -p $(NVIM_DIR)
+	mkdir -p $(NVIM_PLUGINS_DIR)
 	ln -sf $(SELF_NVIM_DIR)/init.vim $(NVIM_DIR)/init.vim
 	ln -sf $(SELF_NVIM_DIR)/dein.toml $(NVIM_DIR)/dein.toml
 	ln -sf $(SELF_NVIM_DIR)/dein_lazy.toml $(NVIM_DIR)/dein_lazy.toml
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/defx.vim $(NVIM_PLUGINS_DIR)/defx.vim
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/denite.vim $(NVIM_PLUGINS_DIR)/denite.vim
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/vim-lsp.vim $(NVIM_PLUGINS_DIR)/vim-lsp.vim
+
+.PHONY: nvim-cache-clean
+nvim-cache-clean:
+	rm -rf $(NVIM_CACHE_DIR)
+
+.PHONY: nvim-cache-init
+nvim-cache-init:
+	mkdir -p $(NVIM_CACHE_DIR)
+	curl $(NVIM_DEIN_URL) > dein_installer.sh
+	sh dein_installer.sh $(NVIM_CACHE_DIR)
+	rm dein_installer.sh
