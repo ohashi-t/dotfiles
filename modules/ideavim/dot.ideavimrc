@@ -1,20 +1,15 @@
-noremap <Down> <Nop>
-noremap <Up> <Nop>
-noremap <Right> <Nop>
-noremap <Left> <Nop>
-inoremap <Down> <Nop>
-inoremap <Up> <Nop>
-inoremap <Right> <Nop>
-inoremap <Left> <Nop>
-inoremap <BS> <Nop>
-# inoremap <CR> <Nop>
-
-# noremap j gj
-# noremap gj j
-# noremap k gk
-# noremap gk k
-
-set number relativenumber
+source ~/.vimrc
+"noremap <Down> <Nop>
+"noremap <Up> <Nop>
+"noremap <Right> <Nop>
+"noremap <Left> <Nop>
+"inoremap <Down> <Nop>
+"inoremap <Up> <Nop>
+"inoremap <Right> <Nop>
+"inoremap <Left> <Nop>
+"inoremap <BS> <Nop>
+"
+"set number relativenumber
 set idearefactormode=keep
 set ideajoin
 
@@ -22,16 +17,16 @@ set ideajoin
 " オリジナル設定
 "" ------------------------------------
 " 検索するときに大文字小文字を区別しない
-set ignorecase
+"set ignorecase
 
 " 検索時に大文字を含んでいたら大/小を区別
-set smartcase
+"set smartcase
 
 " インクリメンタル検索 (検索ワードの最初の文字を入力した時点で検索が開始)
-set incsearch
+"set incsearch
 
 " 検索対象をハイライト
-set hlsearch
+"set hlsearch
 
 " 対応する括弧やブレースを表示
 set showmatch matchtime=1
@@ -40,10 +35,10 @@ set showmatch matchtime=1
 set cmdheight=2
 
 " ステータス行を常に表示
-set laststatus=2
+"set laststatus=2
 
 " ウィンドウの右下にまだ実行していない入力中のコマンドを表示
-set showcmd
+"set showcmd
 
 " 省略されずに表示
 set display=lastline
@@ -52,13 +47,13 @@ set display=lastline
 set listchars=tab:^\ ,trail:~
 
 " ヤンクでクリップボードにコピー
-set clipboard+=unnamed
+"set clipboard+=unnamed
 
 " 対応する括弧を強調表示
-set showmatch
+"set showmatch
 
 " Escの2回押しでハイライト消去
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+"nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 
 " 行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
@@ -67,7 +62,7 @@ set whichwrap=b,s,h,l,<,>,[,],~
 set cinoptions+=:0
 
 " インデント幅
-set shiftwidth=2
+"set shiftwidth=2
 
 " タブキー押下時に挿入される文字幅を指定
 set softtabstop=2
