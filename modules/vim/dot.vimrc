@@ -38,9 +38,15 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
-noremap <C-n> gt
-noremap <C-p> gT
+cnoremap <Esc><Esc> <Esc>
+vnoremap <Esc><Esc> <Esc>
+inoremap <Esc><Esc> <Esc>
+nnoremap <C-n> gt
+nnoremap <C-p> gT
 
+"ex_modeで<C-p>, <C-n>は入力途中のキーワードで絞り込めない為
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 "noremap j gj
 "noremap gj j
 "noremap k gk
@@ -57,6 +63,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
+noremap <Leader>h :set relativenumber!<CR>
 nmap <Leader><Leader> [~_~]
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
