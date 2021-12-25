@@ -60,9 +60,9 @@ cnoremap <C-n> <Down>
 "noremap $ g$
 "noremap g$ $
 
-"d キー削除でデフォルトレジスタに入れない
-nnoremap d "_d
-vnoremap d "_d
+"x キー削除でデフォルトレジスタに入れない
+nnoremap x "_x
+vnoremap x "_x
 
 
 nnoremap / /\v

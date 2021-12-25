@@ -125,3 +125,7 @@ set -x PATH $HOME/.npm-global/bin $PATH
 
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
+
+if [ -z "$TMUX" ]
+    tmux new -s main
+end
