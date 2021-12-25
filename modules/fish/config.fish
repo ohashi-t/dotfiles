@@ -127,5 +127,5 @@ status is-interactive; and pyenv init --path | source
 pyenv init - | source
 
 if [ -z "$TMUX" ]
-    tmux new -s main
+    tmux new -s main \; source-file $HOME/.config/tmux_source/file/at_terminal_starting.conf
 end
