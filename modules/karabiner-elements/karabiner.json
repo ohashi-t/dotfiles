@@ -350,12 +350,6 @@
                                             "iso"
                                         ],
                                         "type": "keyboard_type_if"
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$"
-                                        ],
-                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -386,52 +380,9 @@
                                 "conditions": [
                                     {
                                         "keyboard_types": [
-                                            "ansi",
-                                            "iso"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "open_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "open_bracket",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
                                             "jis"
                                         ],
                                         "type": "keyboard_type_if"
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$"
-                                        ],
-                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "from": {
@@ -454,42 +405,6 @@
                                     },
                                     {
                                         "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": [
-                                            "jis"
-                                        ],
-                                        "type": "keyboard_type_if"
-                                    },
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.Terminal$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "close_bracket",
-                                        "modifiers": [
-                                            "control"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"

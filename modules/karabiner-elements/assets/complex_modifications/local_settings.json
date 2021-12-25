@@ -365,49 +365,6 @@
                 "ansi",
                 "iso"
               ]
-            },
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "control"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "open_bracket",
-              "modifiers": [
-                "control"
-              ]
-            },
-            {
-              "key_code": "japanese_eisuu"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "keyboard_type_if",
-              "keyboard_types": [
-                "ansi",
-                "iso"
-              ]
-            },
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
-              ]
             }
           ]
         },
@@ -441,48 +398,6 @@
               "type": "keyboard_type_if",
               "keyboard_types": [
                 "jis"
-              ]
-            },
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "control"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "close_bracket",
-              "modifiers": [
-                "control"
-              ]
-            },
-            {
-              "key_code": "japanese_eisuu"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "keyboard_type_if",
-              "keyboard_types": [
-                "jis"
-              ]
-            },
-            {
-              "type": "frontmost_application_if",
-              "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
               ]
             }
           ]
