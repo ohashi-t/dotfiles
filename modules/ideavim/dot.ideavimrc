@@ -71,10 +71,6 @@ set softtabstop=2
 " 他人の設定
 " ------------------------------------
 
-"x キー削除でデフォルトレジスタに入れない
-"nnoremap x "_x
-"vnoremap x "_x
-
 " ヤンクでクリップボードにコピー
 "noremap "+y "*y
 "noremap "+Y "*Y

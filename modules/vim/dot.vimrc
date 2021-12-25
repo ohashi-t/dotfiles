@@ -1,6 +1,7 @@
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 filetype plugin indent on
+runtime macros/matchit.vim
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -57,6 +58,11 @@ cnoremap <C-n> <Down>
 "noremap g^ ^
 "noremap $ g$
 "noremap g$ $
+
+"d キー削除でデフォルトレジスタに入れない
+nnoremap d "_d
+vnoremap d "_d
+
 
 nnoremap / /\v
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
