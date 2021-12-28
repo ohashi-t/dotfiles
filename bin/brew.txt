@@ -18,6 +18,7 @@ heroku
 jq
 libyaml
 mcrypt
+mdr
 memcached
 mobile-shell
 mplayer

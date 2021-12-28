@@ -27,3 +27,16 @@ repo = 'Shougo/denite.nvim'
 hook_add = '''
 source ~/.config/nvim/plugins/denite.vim
 '''
+
+[[plugins]]
+repo = 'skanehira/preview-markdown.vim'
+hook_add = '''
+let g:preview_markdown_vertical = 1
+let g:preview_markdown_parser = 'mdcat'
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
