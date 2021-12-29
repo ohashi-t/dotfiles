@@ -23,6 +23,7 @@ nvim-install:
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/defx.vim $(NVIM_PLUGINS_DIR)/defx.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/denite.vim $(NVIM_PLUGINS_DIR)/denite.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/vim-lsp.vim $(NVIM_PLUGINS_DIR)/vim-lsp.vim
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/neosnippet.vim $(NVIM_PLUGINS_DIR)/neosnippet.vim
 
 .PHONY: nvim-cache-clean
 nvim-cache-clean:

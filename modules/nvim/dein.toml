@@ -37,6 +37,12 @@ let g:preview_markdown_parser = 'mdcat'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/neosnippet.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
