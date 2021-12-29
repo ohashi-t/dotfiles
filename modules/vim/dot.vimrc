@@ -47,9 +47,11 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
-"ex_modeで<C-p>, <C-n>は入力途中のキーワードで絞り込めない為
-"cnoremap <C-p> <Up>
-"cnoremap <C-n> <Down>
+if has('vim')
+  "ex_modeで<C-p>, <C-n>は入力途中のキーワードで絞り込めない為
+  cnoremap <C-p> <Up>
+  cnoremap <C-n> <Down>
+endif
 
 "noremap j gj
 "noremap gj j
