@@ -28,7 +28,7 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-set timeoutlen=10
+"set timeoutlen=10
 
 noremap <Down> <Nop>
 noremap <Up> <Nop>
@@ -43,6 +43,7 @@ inoremap <BS> <C-l>
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
 inoremap <Esc><Esc> <Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 
@@ -66,11 +67,10 @@ vnoremap x "_x
 
 
 nnoremap / /\v
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
-noremap <Leader>h :set relativenumber!<CR>
+nnoremap <Leader>h :set relativenumber!<CR>
 nmap <Leader><Leader> [~_~]
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
