@@ -51,6 +51,7 @@ if has('vim')
   "ex_modeで<C-p>, <C-n>は入力途中のキーワードで絞り込めない為
   cnoremap <C-p> <Up>
   cnoremap <C-n> <Down>
+  set wildmenu
 endif
 
 "noremap j gj
