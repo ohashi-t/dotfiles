@@ -74,9 +74,9 @@ nnoremap / /\v
 inoremap {<Space> {<Space><Space>}<Left><Left>
 inoremap (<Space> ()<Left>
 inoremap [<Space> []<Left>
-inoremap {<CR> {<CR><CR>}<Up><Tab>
-inoremap (<CR> (<CR><CR>)<Up><Tab>
-inoremap [<CR> [<CR><CR>]<Up><Tab>
+inoremap {<CR> {<CR>}<Esc><S-o>
+inoremap (<CR> (<CR>)<Esc><S-o>
+inoremap [<CR> [<CR>]<Esc><S-o>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
@@ -90,6 +90,3 @@ nnoremap <Leader> <Nop>
 noremap [~_~]j "*p
 
 syntax enable
-
-
-
