@@ -69,8 +69,14 @@ endif
 nnoremap x "_x
 vnoremap x "_x
 
-
 nnoremap / /\v
+
+inoremap {<Space> {<Space><Space>}<Left><Left>
+inoremap (<Space> ()<Left>
+inoremap [<Space> []<Left>
+inoremap {<CR> {<CR>}<Esc><S-o>
+inoremap (<CR> (<CR>)<Esc><S-o>
+inoremap [<CR> [<CR>]<Esc><S-o>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
@@ -85,6 +91,3 @@ nmap <Leader><Leader> [~_~]
 noremap [~_~]j "*p
 
 syntax enable
-
-
-
