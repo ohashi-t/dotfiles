@@ -1,8 +1,10 @@
 NVIM_DIR = ~/.config/nvim
 NVIM_PLUGINS_DIR = $(NVIM_DIR)/plugins
+NVIM_SNIPPETS_DIR = $(NVIM_DIR)/snippets
 NVIM_CACHE_DIR = ~/.cache/dein
 SELF_NVIM_DIR = $(MODULE_DIR)/nvim
 SELF_NVIM_PLUGINS_DIR = $(SELF_NVIM_DIR)/plugins
+SELF_NVIM_SNIPPETS_DIR = $(SELF_NVIM_DIR)/snippets
 
 NVIM_DEIN_URL = https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
 
@@ -17,6 +19,7 @@ nvim-clean:
 nvim-install:
 	mkdir -p $(NVIM_DIR)
 	mkdir -p $(NVIM_PLUGINS_DIR)
+	mkdir -p $(NVIM_SNIPPETS_DIR)
 	ln -sf $(SELF_NVIM_DIR)/init.vim $(NVIM_DIR)/init.vim
 	ln -sf $(SELF_NVIM_DIR)/dein.toml $(NVIM_DIR)/dein.toml
 	ln -sf $(SELF_NVIM_DIR)/dein_lazy.toml $(NVIM_DIR)/dein_lazy.toml
@@ -24,6 +27,7 @@ nvim-install:
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/denite.vim $(NVIM_PLUGINS_DIR)/denite.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/vim-lsp.vim $(NVIM_PLUGINS_DIR)/vim-lsp.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/neosnippet.vim $(NVIM_PLUGINS_DIR)/neosnippet.vim
+	ln -sf $(SELF_NVIM_SNIPPETS_DIR)/rust.snip $(NVIM_SNIPPETS_DIR)/rust.snip
 
 .PHONY: nvim-cache-clean
 nvim-cache-clean:

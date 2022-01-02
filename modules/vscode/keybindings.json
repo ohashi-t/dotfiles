@@ -92,5 +92,9 @@
         "key": "shift+cmd+k",
         "command": "-editor.action.deleteLines",
         "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "acceptSelectedSuggestionOnEnter"
     }
 ]
