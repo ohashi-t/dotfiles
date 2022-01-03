@@ -71,9 +71,9 @@ vnoremap x "_x
 
 nnoremap / /\v
 
-inoremap {<Space> {<Space><Space>}<Left><Left>
-inoremap (<Space> ()<Left>
-inoremap [<Space> []<Left>
+inoremap { {<Space><Space>}<Left><Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
 inoremap {<CR> {<CR>}<Esc><S-o>
 inoremap (<CR> (<CR>)<Esc><S-o>
 inoremap [<CR> [<CR>]<Esc><S-o>
@@ -87,7 +87,6 @@ noremap <C-l> <Nop>
 
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
-nmap <Leader><Leader> [~_~]
 noremap [~_~]j "*p
 
 syntax enable
