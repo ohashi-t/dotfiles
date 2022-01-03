@@ -71,9 +71,16 @@ vnoremap x "_x
 
 nnoremap / /\v
 
-inoremap {<Space> {<Space><Space>}<Left><Left>
-inoremap (<Space> ()<Left>
-inoremap [<Space> []<Left>
+"inoremap {<Space> {}<Left>
+"inoremap (<Space> ()<Left>
+"inoremap [<Space> []<Left>
+"inoremap {<CR> {<CR>}<Esc><S-o>
+"inoremap (<CR> (<CR>)<Esc><S-o>
+"inoremap [<CR> [<CR>]<Esc><S-o>
+
+inoremap { {<Space><Space>}<Left><Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
 inoremap {<CR> {<CR>}<Esc><S-o>
 inoremap (<CR> (<CR>)<Esc><S-o>
 inoremap [<CR> [<CR>]<Esc><S-o>
