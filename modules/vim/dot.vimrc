@@ -7,7 +7,7 @@ if filereadable(expand('~/.config/vim_setting/base.vimrc'))
   source ~/.config/vim_setting/base.vimrc
 endif
 
-if has('vim')
+if !has('nvim')
   "ex_modeで<C-p>, <C-n>は入力途中のキーワードで絞り込めない為
   cnoremap <C-p> <Up>
   cnoremap <C-n> <Down>
