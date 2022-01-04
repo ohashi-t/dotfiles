@@ -74,6 +74,15 @@ nnoremap / /\v
 inoremap { {<Space><Space>}<Left><Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
+inoremap < <><Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap {} {}
+inoremap () ()
+inoremap [] []
+inoremap <> <>
+inoremap "" ""
+inoremap '' ''
 inoremap {<CR> {<CR>}<Esc><S-o>
 inoremap (<CR> (<CR>)<Esc><S-o>
 inoremap [<CR> [<CR>]<Esc><S-o>
@@ -81,6 +90,7 @@ inoremap [<CR> [<CR>]<Esc><S-o>
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 nnoremap <Leader>h :set relativenumber!<CR>
+nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 nmap <Leader><Leader> [~_~]
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>

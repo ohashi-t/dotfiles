@@ -42,5 +42,6 @@ nnoremap <silent> <leader>h :Denite command_history<CR>
 nnoremap <silent> <leader>g :Denite grep<CR>
 
 let g:deoplete#enable_at_startup = 1
+colorscheme molokai
 
 source ~/.vimrc
