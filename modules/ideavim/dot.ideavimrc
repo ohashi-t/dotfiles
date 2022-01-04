@@ -1,15 +1,5 @@
-source ~/.vimrc
-"noremap <Down> <Nop>
-"noremap <Up> <Nop>
-"noremap <Right> <Nop>
-"noremap <Left> <Nop>
-"inoremap <Down> <Nop>
-"inoremap <Up> <Nop>
-"inoremap <Right> <Nop>
-"inoremap <Left> <Nop>
-"inoremap <BS> <Nop>
-"
-"set number relativenumber
+source ~/.config/vim_setting/base.vimrc
+
 set idearefactormode=keep
 set ideajoin
 
