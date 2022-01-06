@@ -33,6 +33,7 @@ endif
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 nnoremap <silent> <leader>y :Defx<CR>
+nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
 nnoremap <silent> <leader>k :Denite file/rec buffer<CR>
 nnoremap <silent> <leader>b :Denite buffer<CR>
 nnoremap <silent> <leader>l :Denite line<CR>
