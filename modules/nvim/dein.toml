@@ -49,3 +49,6 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
