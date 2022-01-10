@@ -35,16 +35,16 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
-"noremap j gj
-"noremap gj j
-"noremap k gk
-"noremap gk k
-"noremap 0 g0
-"noremap g0 0
-"noremap ^ g^
-"noremap g^ ^
-"noremap $ g$
-"noremap g$ $
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
+noremap 0 g0
+noremap g0 0
+noremap ^ g^
+noremap g^ ^
+noremap $ g$
+noremap g$ $
 
 "x キー削除でデフォルトレジスタに入れない
 nnoremap x "_x
@@ -56,5 +56,7 @@ cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
 inoremap <Esc><Esc> <Esc>
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-nnoremap <C-n> gt
-nnoremap <C-p> gT
+if !has('nvim')
+  nnoremap <C-n> gt
+  nnoremap <C-p> gT
+endif
