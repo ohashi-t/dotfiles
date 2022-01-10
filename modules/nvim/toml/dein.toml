@@ -1,0 +1,51 @@
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'mg979/vim-visual-multi'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+source ~/.config/nvim/plugins/defx.vim
+'''
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+source ~/.config/nvim/plugins/denite.vim
+'''
+
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#
+#[[plugins]]
+#repo = 'lighttiger2505/deoplete-vim-lsp'
+
+#[[plugins]]
+#repo = 'Shougo/neosnippet.vim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/neosnippet.vim
+#'''
+#
+#[[plugins]]
+#repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+branch = 'release'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.nvim
+'''

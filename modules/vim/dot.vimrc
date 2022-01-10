@@ -14,21 +14,21 @@ if !has('nvim')
   set wildmenu
 endif
 
-inoremap { {<Space><Space>}<Left><Left>
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap < <><Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap {} {}
-inoremap () ()
-inoremap [] []
-inoremap <> <>
-inoremap "" ""
-inoremap '' ''
-inoremap {<CR> {<CR>}<Esc><S-o>
-inoremap (<CR> (<CR>)<Esc><S-o>
-inoremap [<CR> [<CR>]<Esc><S-o>
+"inoremap { {<Space><Space>}<Left><Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
+"inoremap < <><Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
+"inoremap {} {}
+"inoremap () ()
+"inoremap [] []
+"inoremap <> <>
+"inoremap "" ""
+"inoremap '' ''
+"inoremap {<CR> {<CR>}<Esc><S-o>
+"inoremap (<CR> (<CR>)<Esc><S-o>
+"inoremap [<CR> [<CR>]<Esc><S-o>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
