@@ -19,20 +19,28 @@ hook_add = '''
 source ~/.config/nvim/plugins/denite.vim
 '''
 
-#[[plugins]]
-#repo = 'Shougo/deoplete.nvim'
-#
-#[[plugins]]
-#repo = 'lighttiger2505/deoplete-vim-lsp'
 
-#[[plugins]]
-#repo = 'Shougo/neosnippet.vim'
-#hook_add = '''
-#source ~/.config/nvim/plugins/neosnippet.vim
-#'''
-#
-#[[plugins]]
-#repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/neosnippet.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
 
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
@@ -43,9 +51,10 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-branch = 'release'
-hook_add = '''
-source ~/.config/nvim/plugins/coc.nvim
-'''
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#branch = 'release'
+#build = 'coc#util#install()'
+#hook_add = '''
+#source ~/.config/nvim/plugins/coc.nvim
+#'''

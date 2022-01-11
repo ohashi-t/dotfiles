@@ -61,6 +61,14 @@ function fish_user_key_bindings
     bind \co peco_ghq
     bind \cq peco_z
     bind \cg fzf
+
+    fish_vi_key_bindings
+    bind -M insert \cf accept-autosuggestion
+    bind \cf accept-autosuggestion
+    bind -M insert \ef forward-word
+    bind \ef forward-word
+    bind \co peco_ghq
+    bind -M insert \co peco_ghq
 end
 
 # 右端の時刻表示を無効にする
