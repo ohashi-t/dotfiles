@@ -21,12 +21,6 @@ source ~/.config/nvim/plugins/denite.vim
 
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/neosnippet.vim
@@ -37,9 +31,18 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-lsp.vim
+'''
+
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
-repo = 'mattn/vim-lsp-settings'
+repo = 'Shougo/deoplete.nvim'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
 
 
 [[plugins]]
@@ -50,6 +53,9 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+
+
+
 
 #[[plugins]]
 #repo = 'neoclide/coc.nvim'
