@@ -1,3 +1,19 @@
+function CustomSolargraphRegist(solargraph_path)
+    if substitute(a:solargraph_path, '^.*\/', '', '') != 'solargraph' || !executable(a:solargraph_path)
+      echo "can't executable this arg_path."
+      return
+    endif
+
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, a:solargraph_path . ' stdio']},
+        \ 'initialization_options': {"diagnostics": "true"},
+        \ 'whitelist': ['ruby'],
+        \ })
+
+    echo "solargraph registered."
+endfunction
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -23,3 +39,6 @@ augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/.cache/vim-lsp.log')
