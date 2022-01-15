@@ -116,7 +116,8 @@ end
 set -x DISABLE_SPRING 1
 set -x DISABLE_DATABASE_ENVIRONMENT_CHECK 1
 
-set -x PATH $HOME/.npm-global/bin $PATH
+#set -x PATH $HOME/.npm-global/bin $PATH
+set -g fish_user_paths $HOME/.npm-global/bin $fish_user_paths
 
 # ログインシェルの場合のみ
 # ex.)bashから起動した場合、bash_profileにanyenvに関する記述が既にあるとエラーになる
@@ -125,13 +126,21 @@ if [ "$SHELL" = "/usr/local/bin/fish" ]
     eval (anyenv init - | source)
 end
 
-set -x PATH $HOME/.cargo/bin $PATH
+if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+    #set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    set -g fish_user_paths $HOME/.local/share/vim-lsp-settings/servers/solargraph $fish_user_paths
+end
+
+#set -x PATH $HOME/.cargo/bin $PATH
+set -g fish_user_paths $HOME/.cargo/bin $fish_user_paths
 
 set -x PYENV_ROOT $HOME/.pyenv
 # fish_user_pathsに設定したらダメっぽい
 # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-set -x PATH $PYENV_ROOT/bin $PATH
-set -x PATH $HOME/.npm-global/bin $PATH
+#set -x PATH $PYENV_ROOT/bin $PATH
+#set -x PATH $HOME/.npm-global/bin $PATH
+set -g fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+set -g fish_user_paths $HOME/.npm-global/bin $fish_user_paths
 
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
