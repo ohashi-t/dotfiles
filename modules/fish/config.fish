@@ -116,35 +116,31 @@ end
 set -x DISABLE_SPRING 1
 set -x DISABLE_DATABASE_ENVIRONMENT_CHECK 1
 
-#set -x PATH $HOME/.npm-global/bin $PATH
-set -g fish_user_paths $HOME/.npm-global/bin $fish_user_paths
-
-# ログインシェルの場合のみ
-# ex.)bashから起動した場合、bash_profileにanyenvに関する記述が既にあるとエラーになる
-if [ "$SHELL" = "/usr/local/bin/fish" ]
-    set -x PATH $HOME/.anyenv/bin $PATH
-    eval (anyenv init - | source)
-end
-
-if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-    #set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
-    set -g fish_user_paths $HOME/.local/share/vim-lsp-settings/servers/solargraph $fish_user_paths
-end
-
-#set -x PATH $HOME/.cargo/bin $PATH
-set -g fish_user_paths $HOME/.cargo/bin $fish_user_paths
-
-set -x PYENV_ROOT $HOME/.pyenv
-# fish_user_pathsに設定したらダメっぽい
-# set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-#set -x PATH $PYENV_ROOT/bin $PATH
-#set -x PATH $HOME/.npm-global/bin $PATH
-set -g fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-set -g fish_user_paths $HOME/.npm-global/bin $fish_user_paths
-
-status is-interactive; and pyenv init --path | source
-pyenv init - | source
 
 if [ -z "$TMUX" ]
+    set -x PATH $HOME/.npm-global/bin $PATH
+
+    # ログインシェルの場合のみ
+    # ex.)bashから起動した場合、bash_profileにanyenvに関する記述が既にあるとエラーになる
+    if [ "$SHELL" = "/usr/local/bin/fish" ]
+        set -x PATH $HOME/.anyenv/bin $PATH
+        eval (anyenv init - | source)
+    end
+
+    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+        set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    end
+
+    set -x PATH $HOME/.cargo/bin $PATH
+
+    set -x PYENV_ROOT $HOME/.pyenv
+    # fish_user_pathsに設定したらダメっぽい
+    # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+    set -x PATH $PYENV_ROOT/bin $PATH
+    set -x PATH $HOME/.npm-global/bin $PATH
+
+    status is-interactive; and pyenv init --path | source
+    pyenv init - | source
+
     tmux new -s main \; source-file $HOME/.config/tmux_source/file/at_terminal_starting.conf
 end
