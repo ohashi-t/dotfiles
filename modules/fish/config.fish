@@ -131,8 +131,11 @@ if [ -z "$TMUX" ]
     status is-interactive; and pyenv init --path | source
     pyenv init - | source
 
-    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-        set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+    #    set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    #end
+    if [ -d "$HOME/.cache/custom_bin" ]
+        set -x PATH $HOME/.cache/custom_bin $PATH
     end
     set -x PATH $HOME/.npm-global/bin $PATH
     set -x PATH $HOME/.cargo/bin $PATH

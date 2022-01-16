@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e -o pipefail
+
+[ -e $(pwd)/Gemfile ] || exit -1
+BUNDLE_GEMFILE=$(pwd)/Gemfile bundle exec solargraph $*
