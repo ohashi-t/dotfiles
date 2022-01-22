@@ -68,3 +68,8 @@ set softtabstop=2
 "noremap "+P "*P
 "noremap <C-S-c> "*y
 "noremap <C-S-v> "*P
+
+let g:mapleader = "\<Space>"
+set easymotion
+map <Leader> <Plug>(easymotion-prefix)
+set surround
