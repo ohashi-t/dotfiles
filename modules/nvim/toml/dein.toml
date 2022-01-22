@@ -54,6 +54,14 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+let g:mapleader = "\<Space>"
+nmap <Leader> <Plug>(easymotion-prefix)
+nmap <Leader>s <Plug>(easymotion-s2)
+let g:EasyMotion_smartcase = 1
+'''
 
 
 
