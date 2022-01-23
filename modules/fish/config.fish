@@ -86,6 +86,25 @@ function gme
     git br | peco --layout=bottom-up | xargs git merge --no-ff
 end
 
+function grnm
+    set -l rename_from (git br | peco --layout=bottom-up | xargs)
+    if [ -z "$rename_from" ]
+        return 1
+    end
+    echo "Set new branch name."
+    set -l rename_to (read)
+    echo "Are you sure rename branch $rename_from to $rename_to (y/n)"
+    set -l confirm (read)
+    switch "$confirm"
+    case "y"
+        git branch -m "$rename_from" "$rename_to"
+    case "n"
+        echo "branch rename cancelled..."
+    case '*'
+        echo "please select y or n keys."
+    end
+end
+
 function gbrD
     set -l delete_branch (git br | peco --layout=bottom-up | xargs)
     if [ -z "$delete_branch" ]; then
