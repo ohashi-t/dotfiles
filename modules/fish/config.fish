@@ -82,6 +82,10 @@ function gch
     git br | peco --layout=bottom-up | xargs git checkout
 end
 
+function gme
+    git br | peco --layout=bottom-up | xargs git merge --no-ff
+end
+
 function gbrD
     set -l delete_branch (git br | peco --layout=bottom-up | xargs)
     if [ -z "$delete_branch" ]; then
