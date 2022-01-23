@@ -113,32 +113,47 @@ function pcp
     eval (echo "$peco_commands" | peco)
 end
 
+function tmux_setup
+    if [ -z "$TMUX" ]
+        tmux new -s main \; source-file $HOME/.config/tmux_source/file/at_terminal_starting.conf
+    else
+        echo "tmux is already setup."
+        return 1
+    end
+end
+
 set -x DISABLE_SPRING 1
 set -x DISABLE_DATABASE_ENVIRONMENT_CHECK 1
 
-if [ -z "$TMUX" ]
-    # ログインシェルの場合のみ
-    # ex.)bashから起動した場合、bash_profileにanyenvに関する記述が既にあるとエラーになる
-    if [ "$SHELL" = "/usr/local/bin/fish" ]
-        set -x PATH $HOME/.anyenv/bin $PATH
-        eval (anyenv init - | source)
+if [ -z "$TMUX" ] && status --is-login
+    set -x PATH $HOME/.anyenv/bin $PATH
+    if ! [ -f "/tmp/anyenv_init.cache" ]
+        anyenv init - > /tmp/anyenv_init.cache
     end
+    eval (source /tmp/anyenv_init.cache)
 
     set -x PYENV_ROOT $HOME/.pyenv
     # fish_user_pathsに設定したらダメっぽい
     # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     set -x PATH $PYENV_ROOT/bin $PATH
-    status is-interactive; and pyenv init --path | source
-    pyenv init - | source
 
-    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-        set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    #status is-interactive; and pyenv init --path | source
+    if ! [ -f "/tmp/pyenv_init.cache" ]
+        pyenv init --path | source
+        pyenv init - > /tmp/pyenv_init.cache
     end
+    source /tmp/pyenv_init.cache
+    #pyenv init - | source
+
+    #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+    #    set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
+    #end
     set -x PATH $HOME/.npm-global/bin $PATH
     set -x PATH $HOME/.cargo/bin $PATH
 
     set -x CUSTOM_PATH $PATH
-    tmux new -s main \; source-file $HOME/.config/tmux_source/file/at_terminal_starting.conf
+
+    tmux_setup
 else
     set -x PATH $CUSTOM_PATH
 end
