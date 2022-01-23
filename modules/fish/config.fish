@@ -154,6 +154,6 @@ if [ -z "$TMUX" ] && status --is-login
     set -x CUSTOM_PATH $PATH
 
     tmux_setup
-else
+else if [ -n "$CUSTOM_PATH" ]
     set -x PATH $CUSTOM_PATH
 end
