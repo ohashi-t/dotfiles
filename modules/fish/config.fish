@@ -15,7 +15,6 @@ alias gst 'git status'
 alias gco 'git commit'
 alias gdf 'git diff'
 alias gad 'git add'
-alias glg 'git log'
 alias txks 'tmux kill-server'
 alias txa 'tmux a'
 alias ls 'ls -G'
@@ -119,6 +118,16 @@ function gbrD
         echo "delete branch cancelled..."
     case '*'
         echo "please select y or n keys."
+    end
+end
+
+function glg
+    set -l branch_name (git br | peco --layout=bottom-up | xargs | sed "s/* //")
+    echo "$branch_name"
+    if [ $branch_name = (git branch --show-current) ]
+        git log   
+    else
+        git log "$branch_name"
     end
 end
 
