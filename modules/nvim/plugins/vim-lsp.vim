@@ -1,15 +1,16 @@
-function CustomSolargraphRegist(solargraph_path)
-    if substitute(a:solargraph_path, '^.*\/', '', '') != 'solargraph' || !executable(a:solargraph_path)
-      echo "can't executable this arg_path."
-      return
-    endif
+function CustomSolargraphRegist()
+    "if substitute(a:solargraph_path, '^.*\/', '', '') != 'solargraph' || !executable(a:solargraph_path)
+    "  echo "can't executable this arg_path."
+    "  return
+    "endif
 
     au User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, a:solargraph_path . ' stdio']},
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
         \ 'initialization_options': {"diagnostics": "true"},
         \ 'whitelist': ['ruby'],
         \ })
+    echo "Solargraph registed. Please execute lsp#enable()"
 endfunction
 
 function! s:on_lsp_buffer_enabled() abort

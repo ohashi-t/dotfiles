@@ -15,6 +15,7 @@ alias gst 'git status'
 alias gco 'git commit'
 alias gdf 'git diff'
 alias gad 'git add'
+alias glg 'git log'
 alias txks 'tmux kill-server'
 alias txa 'tmux a'
 alias ls 'ls -G'
@@ -121,7 +122,7 @@ function gbrD
     end
 end
 
-function glg
+function glg_
     set -l branch_name (git br | peco --layout=bottom-up | xargs | sed "s/* //")
     echo "$branch_name"
     if [ $branch_name = (git branch --show-current) ]
@@ -169,6 +170,14 @@ if [ -z "$TMUX" ] && status --is-login
     # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     set -x PATH $PYENV_ROOT/bin $PATH
 
+    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+        set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
+    end
+
+    if [ -d "$HOME/.cache/custom_bin" ]
+        set -x PATH $HOME/.cache/custom_bin $PATH
+    end
+
     #status is-interactive; and pyenv init --path | source
     if ! [ -f "/tmp/pyenv_init.cache" ]
         pyenv init --path | source
@@ -177,9 +186,6 @@ if [ -z "$TMUX" ] && status --is-login
     source /tmp/pyenv_init.cache
     #pyenv init - | source
 
-    #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-    #    set -x PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph $PATH
-    #end
     set -x PATH $HOME/.npm-global/bin $PATH
     set -x PATH $HOME/.cargo/bin $PATH
 
