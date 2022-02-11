@@ -41,4 +41,4 @@ augroup END
 
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/.cache/vim-lsp.log')
-let g:lsp_auto_enable = 0
+let g:lsp_auto_enable = 1
