@@ -2,7 +2,7 @@
 
 set -e -o pipefail
 
-[ -e $(pwd)/Gemfile ] && BUNDLE_GEMFILE=$(pwd)/Gemfile bundle exec solargraph $* && exit || \
-  [ -e $SOLARGRAPH_PATH/solargraph ] && $SOLARGRAPH_PATH/solargraph $* && exit || \
+[ -e $(pwd)/Gemfile ] && BUNDLE_GEMFILE=$(pwd)/Gemfile bundle exec solargraph $*; exit || \
+  [ -e $SOLARGRAPH_PATH/solargraph ] && $SOLARGRAPH_PATH/solargraph $*; exit || \
   echo "Can't executable solargraph."
   exit -1
