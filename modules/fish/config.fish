@@ -7,6 +7,7 @@ function fish_prompt
     end
     printf '%s %s' (set_color yellow)(prompt_pwd) $status_face
 end
+
 # alias
 alias man 'man -C ~/.man.conf'
 alias cdd 'cd ~/Desktop'
