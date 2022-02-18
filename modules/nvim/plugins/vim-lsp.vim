@@ -13,6 +13,17 @@ function CustomSolargraphRegist()
     echo "Solargraph registed. Please execute lsp#enable()"
 endfunction
 
+if executable('solargraph')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'solargraph',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+      \ 'initialization_options': {"diagnostics": "true"},
+      \ 'whitelist': ['ruby'],
+      \ })
+else
+  echo "Solargraph can't execute."
+endif
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -41,4 +52,4 @@ augroup END
 
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/.cache/vim-lsp.log')
-let g:lsp_auto_enable = 0
+let g:lsp_auto_enable = 1

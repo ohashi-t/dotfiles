@@ -35,8 +35,8 @@ hook_add = '''
 source ~/.config/nvim/plugins/vim-lsp.vim
 '''
 
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
