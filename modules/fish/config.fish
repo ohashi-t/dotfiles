@@ -20,6 +20,7 @@ alias glg 'git log'
 alias txks 'tmux kill-server'
 alias txa 'tmux a'
 alias ls 'ls -G'
+alias be 'bundle exec'
 
 function peco_select_history
     if test (count $argv) = 0
