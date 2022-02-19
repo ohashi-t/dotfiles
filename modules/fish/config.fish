@@ -22,12 +22,11 @@ alias txa 'tmux a'
 alias ls 'ls -G'
 alias be 'bundle exec'
 alias j 'cd_and_ls'
-alias jj 'cd_and_ls ..'
 
 abbr -a cd j instead of cd
 
 function cd_and_ls
-    cd $argv && ls
+    cd $argv && ls -a
 end
 function peco_select_history
     if test (count $argv) = 0
@@ -71,6 +70,7 @@ function fish_user_key_bindings
     bind \co peco_ghq
     bind \cq peco_z
     bind \cg fzf
+    bind \ej 'cd_and_ls ..; commandline -f repaint'
 
     # vi-modeのキーバインド設定項目
     #fish_vi_key_bindings --no-erase
