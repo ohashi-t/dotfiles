@@ -31,7 +31,8 @@ function infinity_cd
 end
 
 function cd_and_ls
-    cd $argv && ls -a
+    cd $argv || return
+    ls -a
     commandline -r ''
     commandline 'j '
 end
