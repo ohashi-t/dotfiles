@@ -27,6 +27,8 @@ abbr -a cd j instead of cd
 
 function cd_and_ls
     cd $argv && ls -a
+    commandline -r ''
+    commandline 'j '
 end
 function peco_select_history
     if test (count $argv) = 0
@@ -54,14 +56,14 @@ function peco_z
     end
 end
 function peco_ghq
-    set -l query (commandline)
+    set -l query (commandline -r '')
     if test -n $query
         set peco_flags --query "$query"
     end
     ghq list --full-path | peco $peco_flags --layout=bottom-up | read recent
     if [ $recent ]
         cd_and_ls $recent
-        commandline -r ''
+        #commandline -r ''
         commandline -f repaint
     end
 end
