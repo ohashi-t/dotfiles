@@ -35,8 +35,8 @@ hook_add = '''
 source ~/.config/nvim/plugins/vim-lsp.vim
 '''
 
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -63,7 +63,8 @@ nmap <Leader>s <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase = 1
 '''
 
-
+#[[plugins]]
+#repo = 'tpope/vim-rails'
 
 #[[plugins]]
 #repo = 'neoclide/coc.nvim'
