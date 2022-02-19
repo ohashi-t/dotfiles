@@ -22,6 +22,9 @@ alias txa 'tmux a'
 alias ls 'ls -G'
 alias be 'bundle exec'
 
+function jj
+    cd $argv && ls
+end
 function peco_select_history
     if test (count $argv) = 0
         set peco_flags
@@ -54,7 +57,7 @@ function peco_ghq
     end
     ghq list --full-path | peco $peco_flags --layout=bottom-up | read recent
     if [ $recent ]
-        cd $recent
+        jj $recent
         commandline -r ''
         commandline -f repaint
     end
@@ -172,9 +175,9 @@ if [ -z "$TMUX" ] && status --is-login
     # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     set -x PATH $PYENV_ROOT/bin $PATH
 
-    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-        set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
-    end
+    #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+    #    set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
+    #end
 
     #if [ -d "$HOME/.cache/custom_bin" ]
     #    set -x PATH $HOME/.cache/custom_bin $PATH
