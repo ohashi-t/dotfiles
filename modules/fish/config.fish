@@ -21,8 +21,12 @@ alias txks 'tmux kill-server'
 alias txa 'tmux a'
 alias ls 'ls -G'
 alias be 'bundle exec'
+alias j 'cd_and_ls'
+alias jj 'cd_and_ls ..'
 
-function jj
+abbr -a cd j instead of cd
+
+function cd_and_ls
     cd $argv && ls
 end
 function peco_select_history
@@ -57,7 +61,7 @@ function peco_ghq
     end
     ghq list --full-path | peco $peco_flags --layout=bottom-up | read recent
     if [ $recent ]
-        jj $recent
+        cd_and_ls $recent
         commandline -r ''
         commandline -f repaint
     end
