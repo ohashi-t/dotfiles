@@ -25,6 +25,11 @@ alias j 'cd_and_ls'
 
 abbr -a cd j instead of cd
 
+function infinity_cd
+    cd (ls -la | peco | sed -r 's/.* (.*)$/\1/g' | xargs echo) || return -1
+    infinity_cd
+end
+
 function cd_and_ls
     cd $argv && ls -a
     commandline -r ''
