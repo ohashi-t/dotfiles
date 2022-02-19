@@ -25,13 +25,27 @@ alias j 'cd_and_ls'
 
 abbr -a cd j instead of cd
 
+#TODO 直前のコマンドが失敗した場合に履歴に登録しない（登録を削除する）
+#function failed_not_save_history
+    #history delete -Ce '失敗したコマンド'
+#end
+
+function is_argv_present
+    if [ -z "$argv" ]
+        echo "not_changing_current_directory..."
+        return
+    end
+    echo "$argv"
+end
+
 function infinity_cd
-    cd (ls -la | peco | sed -r 's/.* (.*)$/\1/g' | xargs echo) || return -1
+    #TODO SIGINTとかpecoが空を出力するときのエラーハンドリングを改善したい
+    cd (ls -la | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo) || return
     infinity_cd
 end
 
 function cd_and_ls
-    cd $argv || return
+    cd $argv
     ls -a
     commandline -r ''
     commandline 'j '
