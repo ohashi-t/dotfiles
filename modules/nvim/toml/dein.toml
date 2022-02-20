@@ -63,8 +63,8 @@ nmap <Leader>s <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase = 1
 '''
 
-#[[plugins]]
-#repo = 'tpope/vim-rails'
+[[plugins]]
+repo = 'tpope/vim-rails'
 
 #[[plugins]]
 #repo = 'neoclide/coc.nvim'
