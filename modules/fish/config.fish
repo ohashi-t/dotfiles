@@ -27,7 +27,7 @@ abbr -a cd j instead of cd
 
 #TODO 直前のコマンドが失敗した場合に履歴に登録しない（登録を削除する）
 #function failed_not_save_history
-    #history delete -Ce '失敗したコマンド'
+    #history delete -Ce (history | sed -n 1p)
 #end
 
 function is_argv_present
@@ -38,9 +38,19 @@ function is_argv_present
     echo "$argv"
 end
 
-#TODO SIGINTとかpecoが空を出力するときのエラーハンドリングを改善したい
+function add_slash_to_directory
+    while read line
+        test (string match -r "^d" "$line") && echo "$line""/"|| echo "$line"
+    end
+end
+
 function infinity_cd
-    cd (ls -la | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo) || return
+    cd (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo) 2>/dev/null
+    if test $status -ne 0
+        echo "changing directory failed..."
+        ls -a
+        return
+    end
     infinity_cd
 end
 
