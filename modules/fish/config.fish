@@ -38,13 +38,19 @@ function is_argv_present
     echo "$argv"
 end
 
+#TODO SIGINTとかpecoが空を出力するときのエラーハンドリングを改善したい
 function infinity_cd
-    #TODO SIGINTとかpecoが空を出力するときのエラーハンドリングを改善したい
     cd (ls -la | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo) || return
     infinity_cd
 end
 
 function cd_and_ls
+    if test (count $argv) -gt 1
+        echo "perhaps 'j' command unnecessary?"
+        commandline -r ''
+        commandline "$argv"
+        return
+    end
     cd $argv
     ls -a
     commandline -r ''
