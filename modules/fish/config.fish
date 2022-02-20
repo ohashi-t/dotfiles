@@ -40,14 +40,22 @@ end
 
 function add_slash_to_directory
     while read line
-        test (string match -r "^d" "$line") && echo "$line""/"|| echo "$line"
+        test (string match -r "^d" "$line" 2>/dev/null) && echo "$line""/"|| echo "$line"
     end
 end
 
 function infinity_cd
-    cd (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo) 2>/dev/null
+    set -l target_content (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo)
+    cd  $target_content 2>/dev/null
     if test $status -ne 0
-        echo "changing directory failed..."
+        #set -l cd_content (history | sed -n 1p | read o; string replace 'cd ' '' "$o")
+        if test -f "$target_content"
+            echo "file selected."
+            commandline -r ''
+            commandline "nvim $target_content"
+        else
+            echo "changing directory failed..."
+        end
         ls -a
         return
     end
