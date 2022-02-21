@@ -41,7 +41,7 @@ function is_argv_present
 end
 
 function infinity_cd
-    set -l target_content (ls -aF | tail -n +2 | peco | read o; is_argv_present "$o")
+    set -l target_content (string join \n (ls -aF) (pwd)"/" | tail -n +2 | peco | read o; is_argv_present "$o")
     test -z "$target_content" && return -1
     cd  $target_content 2>/dev/null
     if test $status -ne 0
