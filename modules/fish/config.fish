@@ -21,7 +21,59 @@ alias txks 'tmux kill-server'
 alias txa 'tmux a'
 alias ls 'ls -G'
 alias be 'bundle exec'
+alias j 'cd_and_ls'
 
+abbr -a cd j instead of cd
+
+#TODO 直前のコマンドが失敗した場合に履歴に登録しない（登録を削除する）
+#function failed_not_save_history
+    #history delete -Ce (history | sed -n 1p)
+#end
+
+function is_argv_present
+    if [ -z "$argv" ]
+        echo "not_changing_current_directory..."
+        return
+    end
+    echo "$argv"
+end
+
+function add_slash_to_directory
+    while read line
+        test (string match -r "^d" "$line" 2>/dev/null) && echo "$line""/"|| echo "$line"
+    end
+end
+
+function infinity_cd
+    set -l target_content (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo)
+    cd  $target_content 2>/dev/null
+    if test $status -ne 0
+        #set -l cd_content (history | sed -n 1p | read o; string replace 'cd ' '' "$o")
+        if test -f "$target_content"
+            echo "file selected."
+            commandline -r ''
+            commandline "nvim $target_content"
+        else
+            echo "changing directory failed..."
+        end
+        ls -a
+        return
+    end
+    infinity_cd
+end
+
+function cd_and_ls
+    if test (count $argv) -gt 1
+        echo "perhaps 'j' command unnecessary?"
+        commandline -r ''
+        commandline "$argv"
+        return
+    end
+    cd $argv
+    ls -a
+    commandline -r ''
+    commandline 'j '
+end
 function peco_select_history
     if test (count $argv) = 0
         set peco_flags
@@ -48,14 +100,14 @@ function peco_z
     end
 end
 function peco_ghq
-    set -l query (commandline)
+    set -l query (commandline -r '')
     if test -n $query
         set peco_flags --query "$query"
     end
     ghq list --full-path | peco $peco_flags --layout=bottom-up | read recent
     if [ $recent ]
-        cd $recent
-        commandline -r ''
+        cd_and_ls $recent
+        #commandline -r ''
         commandline -f repaint
     end
 end
@@ -64,6 +116,7 @@ function fish_user_key_bindings
     bind \co peco_ghq
     bind \cq peco_z
     bind \cg fzf
+    bind \ej 'cd_and_ls ..; commandline -f repaint'
 
     # vi-modeのキーバインド設定項目
     #fish_vi_key_bindings --no-erase
@@ -172,9 +225,9 @@ if [ -z "$TMUX" ] && status --is-login
     # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     set -x PATH $PYENV_ROOT/bin $PATH
 
-    if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
-        set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
-    end
+    #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
+    #    set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
+    #end
 
     #if [ -d "$HOME/.cache/custom_bin" ]
     #    set -x PATH $HOME/.cache/custom_bin $PATH
