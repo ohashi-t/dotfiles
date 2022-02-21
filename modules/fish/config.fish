@@ -32,6 +32,13 @@ abbr -a cd j instead of cd
     #history delete -Ce (history | sed -n 1p)
 #end
 
+function erase_previous_history
+    echo ""
+    history delete -c "$argv"
+    commandline -r ''
+    commandline -f repaint
+end
+
 function is_argv_present
     if [ -z "$argv" ]
         echo "not_changing_current_directory..."
@@ -58,14 +65,22 @@ function infinity_cd
     infinity_cd
 end
 
+function reject_j
+    echo "perhaps 'j' command unnecessary?"
+    commandline -r ''
+    commandline "$argv"
+end
+
 function cd_and_ls
     if test (count $argv) -gt 1
-        echo "perhaps 'j' command unnecessary?"
-        commandline -r ''
-        commandline "$argv"
+        reject_j $argv
         return
     end
     cd $argv
+    if test $status -ne 0
+        reject_j $argv
+        return
+    end
     ls -a
     commandline -r ''
     commandline 'j '
@@ -113,6 +128,7 @@ function fish_user_key_bindings
     bind \cq peco_z
     bind \cg fzf
     bind \ej 'cd_and_ls ..; commandline -f repaint'
+    bind \ek 'erase_previous_history (commandline)'
 
     # vi-modeのキーバインド設定項目
     #fish_vi_key_bindings --no-erase
