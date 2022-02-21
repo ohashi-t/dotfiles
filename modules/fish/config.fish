@@ -38,17 +38,11 @@ function is_argv_present
     echo "$argv"
 end
 
-function add_slash_to_directory
-    while read line
-        test (string match -r "^d" "$line" 2>/dev/null) && echo "$line""/"|| echo "$line"
-    end
-end
-
 function infinity_cd
-    set -l target_content (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo)
+    set -l target_content (ls -aF | tail -n +2 | peco | read o; is_argv_present "$o")
+    test -z "$target_content" && return -1
     cd  $target_content 2>/dev/null
     if test $status -ne 0
-        #set -l cd_content (history | sed -n 1p | read o; string replace 'cd ' '' "$o")
         if test -f "$target_content"
             echo "file selected."
             commandline -r ''
