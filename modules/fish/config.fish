@@ -70,11 +70,15 @@ function reject_j
 end
 
 function cd_and_ls
-    if test (count $argv) -gt 1
+    if test (count $argv) -eq 0
+        set target_dir ".."
+    else if test (count $argv) -gt 1
         reject_j $argv
         return
+    else
+        set target_dir "$argv"
     end
-    cd $argv
+    cd $target_dir
     if test $status -ne 0
         reject_j $argv
         return

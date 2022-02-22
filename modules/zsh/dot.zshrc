@@ -4,5 +4,10 @@ alias man="man -C ~/.man.conf"
 alias ls="ls -G"
 
 j() {
-    cd "$1" && pwd && ls -aFG
+    if test $# -eq 0; then
+        local target_dir=".."
+    else
+        local target_dir="$1"
+    fi
+    cd "$target_dir" && pwd && ls -aFG
 }
