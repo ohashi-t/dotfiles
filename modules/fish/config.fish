@@ -30,6 +30,13 @@ abbr -a cd j instead of cd
     #history delete -Ce (history | sed -n 1p)
 #end
 
+function erase_previous_history
+    echo ""
+    history delete -c "$argv"
+    commandline -r ''
+    commandline -f repaint
+end
+
 function is_argv_present
     if [ -z "$argv" ]
         echo "not_changing_current_directory..."
@@ -38,17 +45,11 @@ function is_argv_present
     echo "$argv"
 end
 
-function add_slash_to_directory
-    while read line
-        test (string match -r "^d" "$line" 2>/dev/null) && echo "$line""/"|| echo "$line"
-    end
-end
-
 function infinity_cd
-    set -l target_content (ls -la | tail -n +3 | add_slash_to_directory | peco | read o; is_argv_present "$o" | sed -r 's/.* (.*)$/\1/g' | xargs echo)
+    set -l target_content (string join \n (ls -aF) (pwd)"/" | tail -n +2 | peco | read o; is_argv_present "$o")
+    test -z "$target_content" && return -1
     cd  $target_content 2>/dev/null
     if test $status -ne 0
-        #set -l cd_content (history | sed -n 1p | read o; string replace 'cd ' '' "$o")
         if test -f "$target_content"
             echo "file selected."
             commandline -r ''
@@ -62,14 +63,26 @@ function infinity_cd
     infinity_cd
 end
 
+function reject_j
+    echo "perhaps 'j' command unnecessary?"
+    commandline -r ''
+    commandline "$argv"
+end
+
 function cd_and_ls
-    if test (count $argv) -gt 1
-        echo "perhaps 'j' command unnecessary?"
-        commandline -r ''
-        commandline "$argv"
+    if test (count $argv) -eq 0
+        set target_dir ".."
+    else if test (count $argv) -gt 1
+        reject_j $argv
+        return
+    else
+        set target_dir "$argv"
+    end
+    cd $target_dir
+    if test $status -ne 0
+        reject_j $argv
         return
     end
-    cd $argv
     ls -a
     commandline -r ''
     commandline 'j '
@@ -117,6 +130,7 @@ function fish_user_key_bindings
     bind \cq peco_z
     bind \cg fzf
     bind \ej 'cd_and_ls ..; commandline -f repaint'
+    bind \ek 'erase_previous_history (commandline)'
 
     # vi-modeのキーバインド設定項目
     #fish_vi_key_bindings --no-erase
