@@ -69,5 +69,5 @@ repo = 'neoclide/coc.nvim'
 branch = 'release'
 build = 'coc#util#install()'
 hook_add = '''
-source ~/.config/nvim/plugins/coc.nvim
+source ~/.config/nvim/plugins/coc.vim
 '''
