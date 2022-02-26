@@ -13,11 +13,20 @@ source ~/.config/nvim/plugins/defx.vim
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/denite.vim
+#'''
+
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-source ~/.config/nvim/plugins/denite.vim
+repo = 'junegunn/fzf'
+build = '''
+fzf#install()
 '''
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['/fzf']
 
 
 [[plugins]]
