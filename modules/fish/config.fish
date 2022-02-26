@@ -22,6 +22,7 @@ alias txa 'tmux a'
 alias ls 'ls -G'
 alias be 'bundle exec'
 alias j 'cd_and_ls'
+alias fzf 'fzf --bind=ctrl-k:kill-line'
 
 abbr -a cd j instead of cd
 
