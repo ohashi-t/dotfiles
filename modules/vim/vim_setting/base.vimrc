@@ -51,7 +51,7 @@ inoremap <BS> <C-l>
 nnoremap x "_x
 vnoremap x "_x
 
-nnoremap / /\v
+nnoremap / /\V
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
