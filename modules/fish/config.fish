@@ -46,7 +46,7 @@ function is_argv_present
 end
 
 function infinity_cd
-    set -l target_content (string join \n (ls -aF) (pwd)"/" | tail -n +2 | peco | read o; is_argv_present "$o")
+    set -l target_content (string join \n (ls -aF) (pwd)"/" | tail -n +2 | fzf | read o; is_argv_present "$o")
     test -z "$target_content" && return -1
     cd  $target_content 2>/dev/null
     if test $status -ne 0
@@ -114,10 +114,10 @@ function peco_z
 end
 function peco_ghq
     set -l query (commandline -r '')
-    if test -n $query
-        set peco_flags --query "$query"
-    end
-    ghq list --full-path | peco $peco_flags --layout=bottom-up | read recent
+    #if test -n $query
+    #    set peco_flags --query "$query"
+    #end
+    ghq list --full-path | fzf | read recent
     if [ $recent ]
         cd_and_ls $recent
         #commandline -r ''
@@ -148,15 +148,15 @@ function fish_right_prompt
 end
 
 function gch
-    git br | peco --layout=bottom-up | xargs git checkout
+    git br | fzf | xargs git checkout
 end
 
 function gme
-    git br | peco --layout=bottom-up | xargs git merge --no-ff
+    git br | fzf | xargs git merge --no-ff
 end
 
 function grnm
-    set -l rename_from (git br | peco --layout=bottom-up | xargs)
+    set -l rename_from (git br | fzf | xargs)
     if [ -z "$rename_from" ]
         return 1
     end
@@ -175,7 +175,7 @@ function grnm
 end
 
 function gbrD
-    set -l delete_branch (git br | peco --layout=bottom-up | xargs)
+    set -l delete_branch (git br | fzf | xargs)
     if [ -z "$delete_branch" ]; then
         return 1
     end
@@ -192,7 +192,7 @@ function gbrD
 end
 
 function glg_
-    set -l branch_name (git br | peco --layout=bottom-up | xargs | sed "s/* //")
+    set -l branch_name (git br | fzf | xargs | sed "s/* //")
     echo "$branch_name"
     if [ $branch_name = (git branch --show-current) ]
         git log   
