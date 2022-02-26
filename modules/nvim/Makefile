@@ -32,6 +32,7 @@ nvim-install:
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/vim-lsp.vim $(NVIM_PLUGINS_DIR)/vim-lsp.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/coc.vim $(NVIM_PLUGINS_DIR)/coc.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/neosnippet.vim $(NVIM_PLUGINS_DIR)/neosnippet.vim
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/fzf.vim $(NVIM_PLUGINS_DIR)/fzf.vim
 	ln -sf $(SELF_NVIM_SNIPPETS_DIR)/rust.snip $(NVIM_SNIPPETS_DIR)/rust.snip
 
 .PHONY: nvim-cache-clean
