@@ -27,6 +27,9 @@ fzf#install()
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['/fzf']
+hook_add = '''
+source ~/.config/nvim/plugins/fzf.vim
+'''
 
 
 [[plugins]]
