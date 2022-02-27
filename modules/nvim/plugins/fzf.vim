@@ -7,6 +7,10 @@ function! RRoute() abort
 endfunction
 command! -nargs=0 -bang RRR call RRoute()
 
+if executable('rroute')
+  inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
+endif
+
 if executable('rg')
   function! FZGrep(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
