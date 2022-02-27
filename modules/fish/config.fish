@@ -46,8 +46,16 @@ function is_argv_present
     echo "$argv"
 end
 
+function cat_or_ls
+    if test -f $argv
+        bat "$argv" --color=always --style=header,grid --line-range :100
+    else if test -d $argv
+        ls -aF "$argv"
+    end
+end
+
 function infinity_cd
-    set -l target_content (string join \n (ls -aF) | tail -n +2 | fzf --header=(pwd)/ --preview  "bat {} --color=always --style=header,grid --line-range :100" | read o; is_argv_present "$o")
+    set -l target_content (string join \n (ls -aF) | tail -n +2 | fzf --header=(pwd)/ --preview  "cat_or_ls {}"  | read o; is_argv_present "$o")
     test -z "$target_content" && return -1
     cd  $target_content 2>/dev/null
     if test $status -ne 0
