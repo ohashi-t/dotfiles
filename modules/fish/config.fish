@@ -244,9 +244,9 @@ if [ -z "$TMUX" ] && status --is-login
     #    set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
     #end
 
-    #if [ -d "$HOME/.cache/custom_bin" ]
-    #    set -x PATH $HOME/.cache/custom_bin $PATH
-    #end
+    if [ -d "$HOME/.cache/custom_bin" ]
+        set -x PATH $HOME/.cache/custom_bin $PATH
+    end
 
     #status is-interactive; and pyenv init --path | source
     if ! [ -f "/tmp/pyenv_init.cache" ]
