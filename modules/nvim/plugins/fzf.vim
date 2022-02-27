@@ -1,3 +1,12 @@
+function! RRoute() abort
+  if !executable('rroute')
+    echo "can't execute this command..."
+    return -1
+  endif
+  call fzf#run({'source': 'rroute'})
+endfunction
+command! -nargs=0 -bang RRR call RRoute()
+
 if executable('rg')
   function! FZGrep(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
