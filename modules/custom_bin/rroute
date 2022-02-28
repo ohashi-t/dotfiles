@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 
 git rev-parse --show-toplevel > /dev/null || exit -1
 
