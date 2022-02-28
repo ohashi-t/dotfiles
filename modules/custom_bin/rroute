@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -eu
+
+git rev-parse --show-toplevel > /dev/null || exit -1
+
+project_root_dir="$(git rev-parse --show-toplevel)"
+cache_dir="${project_root_dir}/vendor"
+script_dir=$(cd $(dirname $0); pwd)
+
+if test ! -e ${cache_dir}/tmp_rails_routes.cache; then
+  $script_dir/rails_routes_cache.sh "${project_root_dir}"
+  cat ${cache_dir}/tmp_rails_routes.cache
+else
+  cat ${cache_dir}/tmp_rails_routes.cache
+  $script_dir/rails_routes_cache.sh "${project_root_dir}"
+fi
+

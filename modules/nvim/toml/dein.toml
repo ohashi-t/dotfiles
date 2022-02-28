@@ -13,10 +13,22 @@ source ~/.config/nvim/plugins/defx.vim
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/denite.vim
+#'''
+
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'junegunn/fzf'
+build = '''
+fzf#install()
+'''
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['/fzf']
 hook_add = '''
-source ~/.config/nvim/plugins/denite.vim
+source ~/.config/nvim/plugins/fzf.vim
 '''
 
 
@@ -29,20 +41,20 @@ source ~/.config/nvim/plugins/neosnippet.vim
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-source ~/.config/nvim/plugins/vim-lsp.vim
-'''
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-lsp.vim
+#'''
 
 #[[plugins]]
 #repo = 'mattn/vim-lsp-settings'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
 
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
+#[[plugins]]
+#repo = 'lighttiger2505/deoplete-vim-lsp'
 
 
 [[plugins]]
@@ -51,25 +63,23 @@ repo = 'flazz/vim-colorschemes'
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
+#[[plugins]]
+#repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = '''
-let g:mapleader = "\<Space>"
-nmap <Leader> <Plug>(easymotion-prefix)
-nmap <Leader>s <Plug>(easymotion-s2)
+nmap ? <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase = 1
 '''
 
 [[plugins]]
 repo = 'tpope/vim-rails'
 
-#[[plugins]]
-#repo = 'neoclide/coc.nvim'
-#branch = 'release'
-#build = 'coc#util#install()'
-#hook_add = '''
-#source ~/.config/nvim/plugins/coc.nvim
-#'''
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+branch = 'release'
+build = 'coc#util#install()'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.vim
+'''

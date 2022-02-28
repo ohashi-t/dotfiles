@@ -11,4 +11,5 @@ custom-bin-clean:
 .PHONY: custom-bin-install
 custom-bin-install:
 	mkdir -p $(CUSTOM_BIN_DIR)
-	ln -sf $(SELF_CUSTOM_BIN_DIR)/solargraph $(CUSTOM_BIN_DIR)/solargraph
+	ln -sf $(SELF_CUSTOM_BIN_DIR)/rroute $(CUSTOM_BIN_DIR)/rroute
+	ln -sf $(SELF_CUSTOM_BIN_DIR)/rails_routes_cache.sh $(CUSTOM_BIN_DIR)/rails_routes_cache.sh

@@ -2,6 +2,7 @@ alacritty
 asciiquarium
 autoconf
 automake
+bat
 ccze
 coreutils
 ctags
