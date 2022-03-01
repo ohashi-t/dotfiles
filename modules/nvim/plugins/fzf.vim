@@ -22,3 +22,10 @@ if executable('rg')
 
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 endif
+"
+"function! InfinityCd()
+"  let l:abcd = fzf#run({'source': 'ls -aFG', 'sink': { lines -> lines } })
+"  echo len(abcd)
+"  echo v:shell_error
+"endfunction
+"command! -nargs=* -bang ICd call InfinityCd()
