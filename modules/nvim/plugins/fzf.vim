@@ -23,19 +23,18 @@ if executable('rg')
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 endif
 
-function! CdAndPwd(path)
-  let l:status = system("test -d " . a:path . "; echo $?")
-  if l:status == 0
+function s:CdAndLs(path)
+  let l:isDirectory = system("test -d " . a:path . "; echo $?")
+  if l:isDirectory == 0
     execute("cd " . a:path)
-    call InfinityCd()
+    call LsAndCd()
   else
     echo "can't execute..."
   endif
 endfunction
-command! -nargs=1 -bang CAndP call CdAndPwd(<f-args>)
+command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
-function! InfinityCd()
-
-  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CAndP' })
+function LsAndCd()
+  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CLs' })
 endfunction
-command! -nargs=* -bang ICd call InfinityCd()
+command -nargs=* LCd call LsAndCd()
