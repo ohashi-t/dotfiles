@@ -27,7 +27,7 @@ function! CdAndPwd(path)
   let l:status = system("test -d " . a:path . "; echo $?")
   if l:status == 0
     execute("cd " . a:path)
-    pwd
+    call InfinityCd()
   else
     echo "can't execute..."
   endif
@@ -35,7 +35,7 @@ endfunction
 command! -nargs=1 -bang CAndP call CdAndPwd(<f-args>)
 
 function! InfinityCd()
-  call fzf#run({'source': 'ls -aFG', 'sink': 'CAndP' })
-  echo v:shell_error
+
+  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CAndP' })
 endfunction
 command! -nargs=* -bang ICd call InfinityCd()
