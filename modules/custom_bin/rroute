@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 
 git rev-parse --show-toplevel > /dev/null || exit -1
 
@@ -12,6 +12,7 @@ if test ! -e ${cache_dir}/tmp_rails_routes.cache; then
   cat ${cache_dir}/tmp_rails_routes.cache
 else
   cat ${cache_dir}/tmp_rails_routes.cache
-  $script_dir/rails_routes_cache.sh "${project_root_dir}"
+  test $# -gt 0 && test "${1}" == "recache" && $script_dir/rails_routes_cache.sh "${project_root_dir}"
+  exit 0
 fi
 
