@@ -25,9 +25,12 @@ endif
 
 function s:CdAndLs(path)
   let l:isDirectory = system("test -d " . a:path . "; echo $?")
+  let l:isFile = system("test -f " . a:path . "; echo $?")
   if l:isDirectory == 0
     execute("cd " . a:path)
     call LsAndCd()
+  elseif l:isFile == 0
+    execute("args ". a:path)
   else
     echo "can't execute..."
   endif
