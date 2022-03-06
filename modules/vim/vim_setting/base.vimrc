@@ -61,3 +61,17 @@ if !has('nvim')
   nnoremap <C-n> gt
   nnoremap <C-p> gT
 endif
+
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --hidden'
+  set grepformat=%f:%l:%c:%m
+endif
+
+augroup KeepLastPosition
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+augroup END
+
+if has('persistent_undo')
+  set undodir=~/.config/.vimundo
+  set undofile
+endif
