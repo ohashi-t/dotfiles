@@ -32,11 +32,18 @@ endif
 "inoremap (<CR> (<CR>)<Esc><S-o>
 "inoremap [<CR> [<CR>]<Esc><S-o>
 
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast | catch | endtry
+nnoremap n :Cnext<CR>
+nnoremap N :Cprev<CR>
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
+nnoremap <Leader>n n
+nnoremap <Leader>N N
 nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
-nmap <Leader><Leader> [~_~]
+"nmap <Leader><Leader> [~_~]
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
