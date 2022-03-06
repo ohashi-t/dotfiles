@@ -41,6 +41,7 @@ let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 nnoremap <Leader>n n
 nnoremap <Leader>N N
+nnoremap <Leader>/ :vimgrep<Space>/\V/<Space>%<Space>\|<Space>cw<Left><Left><Left><Left><Left><Left><Left><Left>
 nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 "nmap <Leader><Leader> [~_~]
