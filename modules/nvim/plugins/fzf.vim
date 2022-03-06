@@ -23,13 +23,11 @@ if executable('rg')
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 endif
 
-function s:CdAndLs(path)
-  let l:isDirectory = system("test -d " . a:path . "; echo $?")
-  let l:isFile = system("test -f " . a:path . "; echo $?")
-  if l:isDirectory == 0
+function s:CdAndLs(path) abort
+  if 0 == system("test -d " . a:path . "; echo $?")
     execute("cd " . a:path)
     call LsAndCd()
-  elseif l:isFile == 0
+  elseif 0 == system("test -f " . a:path . "; echo $?")
     execute("args ". a:path)
   else
     echo "can't execute..."
@@ -37,7 +35,7 @@ function s:CdAndLs(path)
 endfunction
 command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
-function LsAndCd()
+function LsAndCd() abort
   call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CLs' })
 endfunction
 command -nargs=* LCd call LsAndCd()
