@@ -22,10 +22,20 @@ if executable('rg')
 
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 endif
-"
-"function! InfinityCd()
-"  let l:abcd = fzf#run({'source': 'ls -aFG', 'sink': { lines -> lines } })
-"  echo len(abcd)
-"  echo v:shell_error
-"endfunction
-"command! -nargs=* -bang ICd call InfinityCd()
+
+function s:CdAndLs(path) abort
+  if 0 == system("test -d " . a:path . "; echo $?")
+    execute("cd " . a:path)
+    call LsAndCd()
+  elseif 0 == system("test -f " . a:path . "; echo $?")
+    execute("args ". a:path)
+  else
+    echo "can't execute..."
+  endif
+endfunction
+command -nargs=1 CLs call s:CdAndLs(<f-args>)
+
+function LsAndCd() abort
+  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CLs' })
+endfunction
+command -nargs=* LCd call LsAndCd()

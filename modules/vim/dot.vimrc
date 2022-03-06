@@ -3,6 +3,8 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 filetype plugin indent on
 runtime macros/matchit.vim
 
+set shell=/bin/bash
+
 if filereadable(expand('~/.config/vim_setting/base.vimrc'))
   source ~/.config/vim_setting/base.vimrc
 endif
