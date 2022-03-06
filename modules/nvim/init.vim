@@ -33,15 +33,8 @@ let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 nnoremap <silent> <leader>y :Defx<CR>
 nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
-nnoremap <silent> <leader>k :Denite file/rec buffer<CR>
-nnoremap <silent> <leader>b :Denite buffer<CR>
-nnoremap <silent> <leader>l :Denite line<CR>
-nnoremap <silent> <leader>o :Denite outline<CR>
-nnoremap <silent> <leader>r :Denite file/old<CR>
-nnoremap <silent> <leader>h :Denite command_history<CR>
-nnoremap <silent> <leader>g :Denite grep<CR>
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 colorscheme molokai
 
 source ~/.vimrc
