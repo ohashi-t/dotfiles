@@ -64,4 +64,4 @@ function! s:defx_my_settings() abort
         \ defx#do_action('change_vim_cwd')
 endfunction
 
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Defx -columns=git:mark:filename:type | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Defx -columns=git:mark:filename:type | endif

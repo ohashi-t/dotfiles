@@ -54,6 +54,7 @@ function LsAndCd() abort
 endfunction
 command -nargs=* LCd call LsAndCd()
 
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif
 "function! FilesSub(words, path) abort
 "  let l:aaaa = execute('grep ' . a:words . ' ' . a:path)
 "endfunction

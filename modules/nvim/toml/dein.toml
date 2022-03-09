@@ -41,11 +41,11 @@ source ~/.config/nvim/plugins/neosnippet.vim
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-#[[plugins]]
-#repo = 'prabirshrestha/vim-lsp'
-#hook_add = '''
-#source ~/.config/nvim/plugins/vim-lsp.vim
-#'''
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# hook_add = '''
+# source ~/.config/nvim/plugins/vim-lsp.vim
+# '''
 
 #[[plugins]]
 #repo = 'mattn/vim-lsp-settings'
@@ -83,3 +83,6 @@ build = 'coc#util#install()'
 hook_add = '''
 source ~/.config/nvim/plugins/coc.vim
 '''
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
