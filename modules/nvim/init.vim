@@ -33,6 +33,7 @@ let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 nnoremap <silent> <leader>y :Defx<CR>
 nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
+nnoremap <silent> <Leader>j :call LsAndCd()<CR>
 
 "let g:deoplete#enable_at_startup = 1
 colorscheme molokai

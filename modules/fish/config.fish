@@ -138,8 +138,9 @@ function fish_user_key_bindings
     bind \co peco_ghq
     bind \cq peco_z
     bind \cg fzf
-    bind \ej 'cd_and_ls ..; commandline -f repaint'
+    bind \eh 'cd_and_ls ..; commandline -f repaint'
     bind \ek 'erase_previous_history (commandline)'
+    bind \ej 'infinity_cd; commandline -f repaint'
 
     # vi-modeのキーバインド設定項目
     #fish_vi_key_bindings --no-erase

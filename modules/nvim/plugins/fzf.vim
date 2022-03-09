@@ -48,8 +48,9 @@ function s:CdAndLs(path) abort
 endfunction
 command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
+"--bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down
 function LsAndCd() abort
-  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd'))], 'sink': 'CLs' })
+  call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd')), '--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'CLs' })
 endfunction
 command -nargs=* LCd call LsAndCd()
 
