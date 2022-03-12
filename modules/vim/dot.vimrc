@@ -59,6 +59,17 @@ if !isdirectory(s:session_path)
   call mkdir(s:session_path, "p")
 endif
 " save session
+command! -nargs=0 AutoSaveSession call s:autoSaveSession()
+function! s:autoSaveSession()
+  let l:abvv = system('git rev-parse --show-toplevel 1>/dev/null; echo $?')
+  echo l:abvv
+  if system('git rev-parse --show-toplevel 1>/dev/null; echo $?') == 0
+    let l:aaaa = tr(trim(system('git rev-parse --show-toplevel')), '/', '_') . '_0'
+    echo l:aaaa
+    execute 'silent mksession!' s:session_path . '/' . l:aaaa
+  endif
+endfunction
+
 command! -nargs=1 SaveSession call s:saveSession(<f-args>)
 function! s:saveSession(file)
   execute 'silent mksession!' s:session_path . '/' . a:file
@@ -88,5 +99,5 @@ command! FdeleteSession call fzf#run({
 
 " autocmd VimLeave * if system('git rev-parse --show-toplevel; echo $?') == 0 | SaveSession(trim(system('git rev-parse --show-toplevel')) . '_0') | endif
  "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LoadSession(trim(system('git rev-parse --show-toplevel')) . '_0') | endif
- " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && filereadable(trim(system('git rev-parse --show-toplevel')) . '_0') | echo trim(system('git rev-parse --show-toplevel')) . '_0' | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && filereadable(trim(system('git rev-parse --show-toplevel')) . '_0') | echo trim(system('git rev-parse --show-toplevel')) . '_0' | endif
 
