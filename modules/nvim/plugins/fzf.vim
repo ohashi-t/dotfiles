@@ -48,25 +48,10 @@ function s:CdAndLs(path) abort
 endfunction
 command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
-"--bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down
+" --bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down
 function LsAndCd() abort
   call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd')), '--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'CLs' })
 endfunction
 command -nargs=* LCd call LsAndCd()
 
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif
-"function! FilesSub(words, path) abort
-"  let l:aaaa = execute('grep ' . a:words . ' ' . a:path)
-"endfunction
-
-"if executable('rg')
-"  function! SearchCurrent(words)
-"    let l:current_buf = expand('%:p')
-"    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-"    let command_fmt2 = 'rg --column --line-number --no-heading --color=always --smart-case -- %s %s || true'
-"    let initial_command = printf(command_fmt2, a:words, l:current_buf)
-"    let reload_command = printf(command_fmt, '{q}')
-"    let spec = {'options': ['--phony', '--bind', 'change:reload:'.reload_command]}
-"    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), 0)
-"  endfunction
-"endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif

@@ -85,3 +85,8 @@ command! FdeleteSession call fzf#run({
 \  'sink':    function('s:deleteSession'),
 \  'options': '-m -x +s',
 \  'down':    '40%'})
+
+" autocmd VimLeave * if system('git rev-parse --show-toplevel; echo $?') == 0 | SaveSession(trim(system('git rev-parse --show-toplevel')) . '_0') | endif
+ "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LoadSession(trim(system('git rev-parse --show-toplevel')) . '_0') | endif
+ " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && filereadable(trim(system('git rev-parse --show-toplevel')) . '_0') | echo trim(system('git rev-parse --show-toplevel')) . '_0' | endif
+
