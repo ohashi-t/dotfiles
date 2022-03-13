@@ -61,17 +61,13 @@ endif
 " save session
 command! -nargs=0 AutoSaveSession call s:autoSaveSession()
 function! s:autoSaveSession()
-  let l:abvv = system('git rev-parse --show-toplevel &>/dev/null; echo $?')
-  echo l:abvv
-  if system('git rev-parse --show-toplevel &>/dev/null; echo $?') == 0
-    let l:aaaa = tr(trim(system('git rev-parse --show-toplevel')), '/', '_') . '_0.vim'
-    echo l:aaaa
-    execute 'silent mksession!' s:session_path . '/' . l:aaaa
+  if 0 == system('git rev-parse --show-toplevel &>/dev/null; echo $?')
+    let l:file_name = tr(trim(system('git rev-parse --show-toplevel')), '/', '_') . '_0.vim'
+    execute 'silent mksession!' s:session_path . '/' . l:file_name
   endif
 endfunction
-
 function! s:autoLoadSession() abort
-  let l:file_name = expand('~/.config/vim_session/') . tr(trim(system('git rev-parse --show-toplevel')), "/", "_") . '_0.vim'
+  let l:file_name = s:session_path . '/' . tr(trim(system('git rev-parse --show-toplevel')), "/", "_") . '_0.vim'
    if filereadable(l:file_name)
      execute 'silent source' l:file_name
    endif
