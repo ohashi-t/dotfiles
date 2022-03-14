@@ -24,6 +24,7 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
+set autochdir
 "set timeoutlen=10
 
 noremap <Down> <Nop>
