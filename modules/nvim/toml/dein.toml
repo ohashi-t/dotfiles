@@ -86,3 +86,8 @@ source ~/.config/nvim/plugins/coc.vim
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+'''
