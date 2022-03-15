@@ -13,8 +13,8 @@ set hlsearch
 set showcmd
 set title
 set relativenumber number
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set nofoldenable
 set noswapfile
 set expandtab
