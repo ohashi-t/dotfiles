@@ -12,14 +12,13 @@ if dein#load_state('~/.cache/dein')
   let s:toml_dir  = '~/.config/nvim/toml'
 
   call dein#load_toml(s:toml_dir . '/dein.toml',      {'lazy': 0})
-  "call dein#load_toml(s:toml_dir . '/ddc_with_depends.toml',      {'lazy': 0})
   call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
+  " if !has('nvim')
+  "   call dein#add('roxma/nvim-yarp')
+  "   call dein#add('roxma/vim-hug-neovim-rpc')
+  " endif
 
   call dein#end()
   call dein#save_state()
@@ -34,8 +33,5 @@ nnoremap <Leader> <Nop>
 nnoremap <silent> <leader>y :Defx<CR>
 nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
 nnoremap <silent> <Leader>j :call LsAndCd()<CR>
-
-"let g:deoplete#enable_at_startup = 1
-colorscheme molokai
 
 source ~/.vimrc

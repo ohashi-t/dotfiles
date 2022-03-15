@@ -59,6 +59,21 @@ if !isdirectory(s:session_path)
   call mkdir(s:session_path, "p")
 endif
 " save session
+command! -nargs=0 AutoSaveSession call s:autoSaveSession()
+function! s:autoSaveSession()
+  if 0 == system('git rev-parse --show-toplevel &>/dev/null; echo $?')
+    let l:file_name = tr(trim(system('git rev-parse --show-toplevel')), '/', '_') . '_0.vim'
+    execute 'silent mksession!' s:session_path . '/' . l:file_name
+  endif
+endfunction
+function! s:autoLoadSession() abort
+  let l:file_name = s:session_path . '/' . tr(trim(system('git rev-parse --show-toplevel')), "/", "_") . '_0.vim'
+   if filereadable(l:file_name)
+     execute 'silent source' l:file_name
+   endif
+endfunction
+command! -nargs=0 AutoLoadSession call s:autoLoadSession()
+
 command! -nargs=1 SaveSession call s:saveSession(<f-args>)
 function! s:saveSession(file)
   execute 'silent mksession!' s:session_path . '/' . a:file
@@ -85,3 +100,6 @@ command! FdeleteSession call fzf#run({
 \  'sink':    function('s:deleteSession'),
 \  'options': '-m -x +s',
 \  'down':    '40%'})
+
+autocmd VimLeave * AutoSaveSession
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | call s:autoLoadSession() | endif

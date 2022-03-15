@@ -52,13 +52,13 @@ repo = 'Shougo/neosnippet-snippets'
 
 #[[plugins]]
 #repo = 'Shougo/deoplete.nvim'
+#hook_add = '''
+#let g:deoplete#enable_at_startup = 1
+#'''
 
 #[[plugins]]
 #repo = 'lighttiger2505/deoplete-vim-lsp'
 
-
-[[plugins]]
-repo = 'flazz/vim-colorschemes'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -84,5 +84,8 @@ hook_add = '''
 source ~/.config/nvim/plugins/coc.vim
 '''
 
+
 [[plugins]]
 repo = 'tpope/vim-commentary'
+
+

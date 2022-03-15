@@ -42,5 +42,6 @@ source-highlight
 stunnel
 the_silver_searcher
 tmux
+tig
 unar
 wget
