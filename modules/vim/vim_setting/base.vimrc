@@ -2,7 +2,7 @@ set hidden
 set encoding=utf-8
 set fileencoding=utf-8
 set clipboard+=unnamed
-set backspace=2
+set backspace=indent,eol,start
 set tabstop=2
 set shiftwidth=2
 set laststatus=2

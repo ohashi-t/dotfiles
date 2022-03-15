@@ -59,12 +59,11 @@ repo = 'Shougo/neosnippet-snippets'
 #[[plugins]]
 #repo = 'lighttiger2505/deoplete-vim-lsp'
 
-
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
+[[plugins]]
+repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -93,3 +92,13 @@ repo = 'flazz/vim-colorschemes'
 hook_add = '''
 colorscheme molokai
 '''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_source = '''
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+let g:gitgutter_set_sign_backgrounds = 1
+'''
+
