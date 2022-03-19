@@ -109,6 +109,14 @@ function peco_select_history
         commandline ''
     end
 end
+function fzf_z
+    z -l | fzf | awk '{ print $2 }' | read recent
+    if test $recent
+        cd $recent
+        commandline -r ''
+        commandline -f repaint
+    end
+end
 function peco_z
     set -l query (commandline)
     if test -n $query
@@ -136,7 +144,7 @@ end
 function fish_user_key_bindings
     bind \cr 'peco_select_history (commandline -b)'
     bind \co peco_ghq
-    bind \cq peco_z
+    bind \cq fzf_z
     bind \cg fzf
     bind \eh 'cd_and_ls ..; commandline -f repaint'
     bind \ek 'erase_previous_history (commandline)'
