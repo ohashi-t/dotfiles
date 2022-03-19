@@ -59,12 +59,11 @@ repo = 'Shougo/neosnippet-snippets'
 #[[plugins]]
 #repo = 'lighttiger2505/deoplete-vim-lsp'
 
-
 [[plugins]]
 repo = 'tpope/vim-surround'
 
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
+[[plugins]]
+repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -88,4 +87,9 @@ source ~/.config/nvim/plugins/coc.vim
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
+[[plugins]]
+repo = 'flazz/vim-colorschemes'
+hook_add = '''
+colorscheme molokai
+'''
 
