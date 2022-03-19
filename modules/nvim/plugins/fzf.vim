@@ -36,6 +36,11 @@ if executable('rg')
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 endif
 
+function! s:CdGitDir() abort
+  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'cd'})
+endfunction
+command! -nargs=0 -bang CGD call s:CdGitDir()
+
 function s:CdAndLs(path) abort
   if 0 == system("test -d " . a:path . "; echo $?")
     execute("cd " . a:path)
@@ -48,7 +53,6 @@ function s:CdAndLs(path) abort
 endfunction
 command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
-" --bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down
 function LsAndCd() abort
   call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd')), '--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'CLs' })
 endfunction
