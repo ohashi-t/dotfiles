@@ -13,8 +13,9 @@ set hlsearch
 set showcmd
 set title
 set relativenumber number
-" set cursorline
-" set cursorcolumn
+" カーソル移動が重くなるので切った
+  " set cursorline
+  " set cursorcolumn
 set nofoldenable
 set noswapfile
 set expandtab
@@ -37,22 +38,23 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
-"noremap j gj
-"noremap gj j
-"noremap k gk
-"noremap gk k
-"noremap 0 g0
-"noremap g0 0
-"noremap ^ g^
-"noremap g^ ^
-"noremap $ g$
-"noremap g$ $
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
+noremap 0 g0
+noremap g0 0
+noremap ^ g^
+noremap g^ ^
+noremap $ g$
+noremap g$ $
 
-"x キー削除でデフォルトレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
 
 nnoremap / /\V
+
+nnoremap Y y$
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
