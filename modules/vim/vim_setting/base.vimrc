@@ -74,10 +74,10 @@ augroup KeepLastPosition
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 augroup END
 
-if has('persistent_undo')
-  set undodir=~/.config/.vimundo
-  set undofile
-endif
+" if has('persistent_undo')
+"   set undodir=~/.config/.vimundo
+"   set undofile
+" endif
 
 "grep結果を自動的にquickfixへ出力・表示する
 "autocmd QuickFixCmdPost *grep* cwindow
