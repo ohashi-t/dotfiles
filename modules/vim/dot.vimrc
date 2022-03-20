@@ -16,25 +16,10 @@ if !has('nvim')
   set wildmenu
 endif
 
-"inoremap { {<Space><Space>}<Left><Left>
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-"inoremap < <><Left>
-"inoremap " ""<Left>
-"inoremap ' ''<Left>
-"inoremap {} {}
-"inoremap () ()
-"inoremap [] []
-"inoremap <> <>
-"inoremap "" ""
-"inoremap '' ''
-"inoremap {<CR> {<CR>}<Esc><S-o>
-"inoremap (<CR> (<CR>)<Esc><S-o>
-"inoremap [<CR> [<CR>]<Esc><S-o>
-
 for char in ['?', '!', ',', '.', '+', '=', ';', '/']
   execute('inoremap ' . char . ' ' . char . '<C-g>u')
 endfor
+inoremap <buffer> <Space> <Space><C-g>u
 
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
@@ -51,7 +36,7 @@ nnoremap <Leader>l :FloadSession<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
-"let g:mapleader = "s"
+" let g:mapleader = "s"
 
 syntax enable
 
