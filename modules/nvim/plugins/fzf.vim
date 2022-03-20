@@ -44,8 +44,14 @@ if executable('rg')
   vnoremap <Leader>e :call FZGitGrepRange()<CR>
 endif
 
+function! s:aaaa(dir_path) abort
+  let l:source_command = "ls -F " . systemlist('git rev-parse --show-toplevel')[0] . '/' . a:dir_path . " | grep -v '/'"
+  call fzf#run({ 'source': l:source_command, 'sink': 'args', 'options': ['--preview', 'bat {}']} )
+endfunction
+command -nargs=1 -bang Aaaa call s:aaaa(<f-args>)
+
 function! s:CdGitDir() abort
-  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'cd'})
+  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'Aaaa'})
 endfunction
 command! -nargs=0 -bang CGD call s:CdGitDir()
 let g:mapleader = "\<Space>"
