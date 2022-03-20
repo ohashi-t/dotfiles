@@ -32,6 +32,10 @@ endif
 "inoremap (<CR> (<CR>)<Esc><S-o>
 "inoremap [<CR> [<CR>]<Esc><S-o>
 
+for char in ['?', '!', ',', '.', '+', '=', ';', '/']
+  execute('inoremap ' . char . ' ' . char . '<C-g>u')
+endfor
+
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
