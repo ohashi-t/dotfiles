@@ -24,6 +24,16 @@ endif
 "  command! -nargs=* -bang RG2 call FZGrep2(<q-args>, <bang>0)
 "endif
 
+function! FZGitGrepRange() range
+  let tmp = @@
+  silent normal gvy
+  let selected = @@
+  let @@ = tmp
+  echo selected
+  call FZGitGrep(selected, 0)
+endfunction
+command! -range RGGR call FZGitGrepRange()
+
 if executable('rg')
   function! FZGrep(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
