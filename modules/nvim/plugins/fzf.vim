@@ -39,17 +39,23 @@ if executable('rg')
     echo selected
     call FZGitGrep(selected, 0)
   endfunction
-
-  let g:mapleader = "\<Space>"
-  vnoremap <Leader>e :call FZGitGrepRange()<CR>
 endif
 
+function! s:OpenGitFile(dir_path) abort
+  let l:full_path = systemlist('git rev-parse --show-toplevel')[0] . '/' . a:dir_path
+  execute "cd " . l:full_path
+  if 0 != system("ls -F | grep -v '/'; echo $?")
+    echo "move to " . l:full_path
+    return
+  endif
+  call fzf#run({ 'source': "ls -F | grep -v '/'", 'sink': 'args', 'options': ['--preview', 'bat {}']} )
+endfunction
+command! -nargs=1 -bang OGFile call s:OpenGitFile(<f-args>)
+
 function! s:CdGitDir() abort
-  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'cd'})
+  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'OGFile'})
 endfunction
 command! -nargs=0 -bang CGD call s:CdGitDir()
-let g:mapleader = "\<Space>"
-nnoremap <Leader>r :CGD<CR>
 
 
 function s:CdAndLs(path) abort
