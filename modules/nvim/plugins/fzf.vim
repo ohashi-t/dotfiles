@@ -11,29 +11,6 @@ if executable('rroute')
   inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
 endif
 
-"if executable('rg')
-"  function! FZGrep2(query, fullscreen)
-"    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-"    let initial_command = printf(command_fmt, shellescape(a:query))
-"    let reload_command = printf(command_fmt, '{q}')
-"    let spec = {'source': initial_command, 'options': ['--print-query', '--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-"    "call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-"    call fzf#run(fzf#wrap(spec))
-"  endfunction
-"
-"  command! -nargs=* -bang RG2 call FZGrep2(<q-args>, <bang>0)
-"endif
-
-function! FZGitGrepRange() range
-  let tmp = @@
-  silent normal gvy
-  let selected = @@
-  let @@ = tmp
-  echo selected
-  call FZGitGrep(selected, 0)
-endfunction
-command! -range RGGR call FZGitGrepRange()
-
 if executable('rg')
   function! FZGrep(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -53,12 +30,27 @@ if executable('rg')
     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endfunction
   command! -nargs=* -bang RGG call FZGitGrep(<q-args>, <bang>0)
+
+  function! FZGitGrepRange() range
+    let tmp = @@
+    silent normal gvy
+    let selected = @@
+    let @@ = tmp
+    echo selected
+    call FZGitGrep(selected, 0)
+  endfunction
+
+  let g:mapleader = "\<Space>"
+  vnoremap <Leader>e :call FZGitGrepRange()<CR>
 endif
 
 function! s:CdGitDir() abort
   call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'cd'})
 endfunction
 command! -nargs=0 -bang CGD call s:CdGitDir()
+let g:mapleader = "\<Space>"
+nnoremap <Leader>r :CGD<CR>
+
 
 function s:CdAndLs(path) abort
   if 0 == system("test -d " . a:path . "; echo $?")
