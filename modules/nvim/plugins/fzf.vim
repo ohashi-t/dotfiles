@@ -45,7 +45,7 @@ if executable('rg')
 endif
 
 function! s:CdGitDir() abort
-  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'cd'})
+  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'cd'})
 endfunction
 command! -nargs=0 -bang CGD call s:CdGitDir()
 let g:mapleader = "\<Space>"
