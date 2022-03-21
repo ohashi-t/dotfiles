@@ -42,6 +42,7 @@ nnoremap <C-f> <C-f>M
 nnoremap <C-b> <C-b>M
 nnoremap <C-d> <C-d>M
 nnoremap <C-u> <C-u>M
+nnoremap G Gzz
 
 noremap j gjzz
 noremap gj jzz
