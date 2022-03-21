@@ -38,10 +38,15 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
-noremap j gj
-noremap gj j
-noremap k gk
-noremap gk k
+nnoremap <C-f> <C-f>M
+nnoremap <C-b> <C-b>M
+nnoremap <C-d> <C-d>M
+nnoremap <C-u> <C-u>M
+
+noremap j gjzz
+noremap gj jzz
+noremap k gkzz
+noremap gk kzz
 noremap 0 g0
 noremap g0 0
 noremap ^ g^
@@ -55,6 +60,8 @@ vnoremap x "_x
 nnoremap / /\V
 
 nnoremap Y y$
+noremap n nzzzv
+noremap N Nzzzv
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
