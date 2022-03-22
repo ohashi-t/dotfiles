@@ -16,21 +16,10 @@ if !has('nvim')
   set wildmenu
 endif
 
-"inoremap { {<Space><Space>}<Left><Left>
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-"inoremap < <><Left>
-"inoremap " ""<Left>
-"inoremap ' ''<Left>
-"inoremap {} {}
-"inoremap () ()
-"inoremap [] []
-"inoremap <> <>
-"inoremap "" ""
-"inoremap '' ''
-"inoremap {<CR> {<CR>}<Esc><S-o>
-"inoremap (<CR> (<CR>)<Esc><S-o>
-"inoremap [<CR> [<CR>]<Esc><S-o>
+for char in ['?', '!', ',', '.', '+', '=', ';', '/']
+  execute('inoremap ' . char . ' ' . char . '<C-g>u')
+endfor
+inoremap <buffer> <Space> <Space><C-g>u
 
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
@@ -47,7 +36,12 @@ nnoremap <Leader>l :FloadSession<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
-"let g:mapleader = "s"
+" defined in nvim/plugins/fzf.vim
+nnoremap <Leader>r :CGD<CR>
+vnoremap <Leader>e :call FZGitGrepRange()<CR>
+
+
+" let g:mapleader = "s"
 
 syntax enable
 
@@ -59,17 +53,19 @@ if !isdirectory(s:session_path)
   call mkdir(s:session_path, "p")
 endif
 " save session
-command! -nargs=0 AutoSaveSession call s:autoSaveSession()
 function! s:autoSaveSession()
   if 0 == system('git rev-parse --show-toplevel &>/dev/null; echo $?')
     let l:file_name = tr(trim(system('git rev-parse --show-toplevel')), '/', '_') . '_0.vim'
     execute 'silent mksession!' s:session_path . '/' . l:file_name
   endif
 endfunction
+command! -nargs=0 AutoSaveSession call s:autoSaveSession()
+
 function! s:autoLoadSession() abort
   let l:file_name = s:session_path . '/' . tr(trim(system('git rev-parse --show-toplevel')), "/", "_") . '_0.vim'
    if filereadable(l:file_name)
      execute 'silent source' l:file_name
+     return
    endif
 endfunction
 command! -nargs=0 AutoLoadSession call s:autoLoadSession()
@@ -102,4 +98,4 @@ command! FdeleteSession call fzf#run({
 \  'down':    '40%'})
 
 autocmd VimLeave * AutoSaveSession
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | call s:autoLoadSession() | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | call s:autoLoadSession() | endif

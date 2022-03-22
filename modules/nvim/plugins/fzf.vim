@@ -11,19 +11,6 @@ if executable('rroute')
   inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
 endif
 
-"if executable('rg')
-"  function! FZGrep2(query, fullscreen)
-"    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-"    let initial_command = printf(command_fmt, shellescape(a:query))
-"    let reload_command = printf(command_fmt, '{q}')
-"    let spec = {'source': initial_command, 'options': ['--print-query', '--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-"    "call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-"    call fzf#run(fzf#wrap(spec))
-"  endfunction
-"
-"  command! -nargs=* -bang RG2 call FZGrep2(<q-args>, <bang>0)
-"endif
-
 if executable('rg')
   function! FZGrep(query, fullscreen)
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
@@ -32,9 +19,44 @@ if executable('rg')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endfunction
-
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
+
+  function! FZGitGrep(query, fullscreen)
+    execute 'cd ' . system('git rev-parse --show-toplevel')
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+  command! -nargs=* -bang RGG call FZGitGrep(<q-args>, <bang>0)
+
+  function! FZGitGrepRange() range
+    let tmp = @@
+    silent normal gvy
+    let selected = @@
+    let @@ = tmp
+    echo selected
+    call FZGitGrep(selected, 0)
+  endfunction
 endif
+
+function! s:OpenGitFile(dir_path) abort
+  let l:full_path = systemlist('git rev-parse --show-toplevel')[0] . '/' . a:dir_path
+  execute "cd " . l:full_path
+  if 0 != system("ls -F | grep -v '/'; echo $?")
+    echo "move to " . l:full_path
+    return
+  endif
+  call fzf#run({ 'source': "ls -F | grep -v '/'", 'sink': 'args', 'options': ['--preview', 'bat {}']} )
+endfunction
+command! -nargs=1 -bang OGFile call s:OpenGitFile(<f-args>)
+
+function! s:CdGitDir() abort
+  call fzf#run({'source': "git ls-files | gsed -E '/^[^/]*$/d' | gsed -E 's;/[^/]*$;;g' | sort | uniq", 'dir': systemlist('git rev-parse --show-toplevel')[0], 'options': ['--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down', '--preview', 'ls -aFG {}'], 'sink': 'OGFile'})
+endfunction
+command! -nargs=0 -bang CGD call s:CdGitDir()
+
 
 function s:CdAndLs(path) abort
   if 0 == system("test -d " . a:path . "; echo $?")
@@ -48,7 +70,6 @@ function s:CdAndLs(path) abort
 endfunction
 command -nargs=1 CLs call s:CdAndLs(<f-args>)
 
-" --bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down
 function LsAndCd() abort
   call fzf#run({'source': 'ls -aF | tail -n +2', 'options': ['--header=' . trim(execute('pwd')), '--bind=ctrl-k:kill-line,Up:Preview-up,Down:preview-down'], 'sink': 'CLs' })
 endfunction

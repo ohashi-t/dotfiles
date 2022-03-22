@@ -13,8 +13,9 @@ set hlsearch
 set showcmd
 set title
 set relativenumber number
-" set cursorline
-" set cursorcolumn
+" カーソル移動が重くなるので切った
+  " set cursorline
+  " set cursorcolumn
 set nofoldenable
 set noswapfile
 set expandtab
@@ -37,22 +38,31 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
-"noremap j gj
-"noremap gj j
-"noremap k gk
-"noremap gk k
-"noremap 0 g0
-"noremap g0 0
-"noremap ^ g^
-"noremap g^ ^
-"noremap $ g$
-"noremap g$ $
+nnoremap <C-f> <C-f>M
+nnoremap <C-b> <C-b>M
+nnoremap <C-d> <C-d>M
+nnoremap <C-u> <C-u>M
+nnoremap G Gzz
 
-"x キー削除でデフォルトレジスタに入れない
+noremap j gjzz
+noremap gj jzz
+noremap k gkzz
+noremap gk kzz
+noremap 0 g0
+noremap g0 0
+noremap ^ g^
+noremap g^ ^
+noremap $ g$
+noremap g$ $
+
 nnoremap x "_x
 vnoremap x "_x
 
 nnoremap / /\V
+
+nnoremap Y y$
+noremap n nzzzv
+noremap N Nzzzv
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
@@ -72,10 +82,10 @@ augroup KeepLastPosition
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 augroup END
 
-if has('persistent_undo')
-  set undodir=~/.config/.vimundo
-  set undofile
-endif
+" if has('persistent_undo')
+"   set undodir=~/.config/.vimundo
+"   set undofile
+" endif
 
 "grep結果を自動的にquickfixへ出力・表示する
 "autocmd QuickFixCmdPost *grep* cwindow
