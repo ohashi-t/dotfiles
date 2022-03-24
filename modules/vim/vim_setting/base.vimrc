@@ -47,7 +47,7 @@ nnoremap <C-b> <C-b>M
 nnoremap <C-d> <C-d>M
 nnoremap <C-u> <C-u>M
 nnoremap G Gzz
-cnoremap <CR> <CR>zz
+cnoremap <expr> <CR> getcmdtype() == '/' ? '<CR>zz' : '<CR>'
 noremap j gjzz
 noremap gj jzz
 noremap k gkzz
