@@ -94,7 +94,7 @@ function cd_and_ls
     end
     ls -a
     commandline -r ''
-    commandline 'j '
+    # commandline 'j '
 end
 function peco_select_history
     if test (count $argv) = 0
