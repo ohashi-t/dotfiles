@@ -38,16 +38,23 @@ inoremap <Right> <Nop>
 inoremap <Left> <Nop>
 inoremap <BS> <C-l>
 
+" 以下画面中央の行にフォーカスするための設定集
+augroup StartAtMiddleLine
+  au VimEnter * normal zz
+augroup END
 nnoremap <C-f> <C-f>M
 nnoremap <C-b> <C-b>M
 nnoremap <C-d> <C-d>M
 nnoremap <C-u> <C-u>M
 nnoremap G Gzz
-
+cnoremap <expr> <CR> getcmdtype() == '/' ? '<CR>zz' : '<CR>'
 noremap j gjzz
 noremap gj jzz
 noremap k gkzz
 noremap gk kzz
+noremap n nzzzv
+noremap N Nzzzv
+
 noremap 0 g0
 noremap g0 0
 noremap ^ g^
@@ -61,8 +68,6 @@ vnoremap x "_x
 nnoremap / /\V
 
 nnoremap Y y$
-noremap n nzzzv
-noremap N Nzzzv
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
