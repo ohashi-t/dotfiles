@@ -6,6 +6,9 @@ source ~/.config/nvim/plugins/ddu.vim
 '''
 
 [[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
@@ -13,6 +16,9 @@ repo = 'Shougo/ddu-ui-ff'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-register'

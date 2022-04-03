@@ -1,11 +1,16 @@
 call ddu#custom#patch_global({
     \   'ui': 'ff',
+    \   'uiParams': {
+    \     'ff': {
+    \       'startFilter': v:true,
+    \     }
+    \   },
     \   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
     \   'sourceOptions': {
     \     '_': {
     \       'matchers': ['matcher_substring'],
     \     },
-    \     'file_rec': {'path': expand("~")},
+    \     'file_rec': {'path': expand("%:h")},
     \   },
     \   'kindOptions': {
     \     'file': {
