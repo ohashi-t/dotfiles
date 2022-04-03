@@ -9,6 +9,9 @@ source ~/.config/nvim/plugins/ddu.vim
 repo = 'Shougo/ddu-kind-file'
 
 [[plugins]]
+repo = 'Shougo/ddu-kind-word'
+
+[[plugins]]
 repo = 'vim-denops/denops.vim'
 
 [[plugins]]
@@ -25,6 +28,9 @@ repo = 'Shougo/ddu-source-register'
 
 [[plugins]]
 repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
 
 [[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
