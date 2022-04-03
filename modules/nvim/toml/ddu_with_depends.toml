@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
-hook_source = '''
+hook_add = '''
 source ~/.config/nvim/plugins/ddu.vim
 '''
 
