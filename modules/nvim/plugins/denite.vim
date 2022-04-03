@@ -16,6 +16,47 @@ function! s:denite_my_settings() abort
         \ denite#do_map('toggle_select').'j'
 endfunction
 
+
+
+call denite#custom#option('default', {
+      \ 'split': 'horizontal',
+      \ 'highlight_filter_background': 'DeniteFilter',
+      \ 'prompt': '> ',
+      \ 'start_filter': v:true
+      \})
+
+
+
+" denite-menu の設定
+let s:menus = {}
+
+" Denite menu:dotfile をすると開くファイルを登録する
+let s:menus.dotfile = {
+    \ 'description': 'Edit your dotfile'
+    \ }
+let s:menus.dotfile.file_candidates = [
+    \ ['vimrc', '~/.vimrc'],
+    \ ['gvimrc', '~/.gvimrc'],
+    \ ['bashrc', '~/.bashrc'],
+    \ ['bash_aliases', '~/.bash_aliases'],
+    \ ]
+
+
+" Denite menu:my_denites をすると開くファイルを登録する
+" コマンドを呼ぶ
+let s:menus.my_denites = {
+    \ 'description': 'Denite list'
+    \ }
+let s:menus.my_denites.command_candidates = [
+      \    ['file/old', 'Denite file/old'],
+      \    ['menu:dotfile', 'Denite menu:dotfile'],
+      \    ['grep', 'Denite grep'],
+      \]
+
+" 登録
+call denite#custom#var('menu', 'menus', s:menus)
+
+
 let g:mapleader = 's'
 nnoremap <silent> <leader>k :Denite file/rec buffer<CR>
 nnoremap <silent> <leader>b :Denite buffer<CR>
@@ -24,3 +65,4 @@ nnoremap <silent> <leader>o :Denite outline<CR>
 nnoremap <silent> <leader>q :Denite file/old<CR>
 nnoremap <silent> <leader>h :Denite command_history<CR>
 nnoremap <silent> <leader>g :Denite grep<CR>
+nnoremap <silent> <leader>M :Denite menu<CR>
