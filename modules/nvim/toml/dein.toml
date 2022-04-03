@@ -13,11 +13,11 @@ source ~/.config/nvim/plugins/defx.vim
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-source ~/.config/nvim/plugins/denite.vim
-'''
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = '''
+# source ~/.config/nvim/plugins/denite.vim
+# '''
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -89,9 +89,6 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'flazz/vim-colorschemes'
-# hook_add = '''
-# colorscheme molokai
-# '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
