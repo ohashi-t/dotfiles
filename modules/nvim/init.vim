@@ -12,6 +12,7 @@ if dein#load_state('~/.cache/dein')
   let s:toml_dir  = '~/.config/nvim/toml'
 
   call dein#load_toml(s:toml_dir . '/dein.toml',      {'lazy': 0})
+  call dein#load_toml(s:toml_dir . '/ddu_with_depends.toml',      {'lazy': 0})
   call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')

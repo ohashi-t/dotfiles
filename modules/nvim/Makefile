@@ -27,12 +27,14 @@ nvim-install:
 	ln -sf $(SELF_NVIM_TOML_DIR)/dein.toml $(NVIM_TOML_DIR)/dein.toml
 	ln -sf $(SELF_NVIM_TOML_DIR)/dein_lazy.toml $(NVIM_TOML_DIR)/dein_lazy.toml
 	ln -sf $(SELF_NVIM_TOML_DIR)/ddc_with_depends.toml $(NVIM_TOML_DIR)/ddc_with_depends.toml
+	ln -sf $(SELF_NVIM_TOML_DIR)/ddu_with_depends.toml $(NVIM_TOML_DIR)/ddu_with_depends.toml
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/defx.vim $(NVIM_PLUGINS_DIR)/defx.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/denite.vim $(NVIM_PLUGINS_DIR)/denite.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/vim-lsp.vim $(NVIM_PLUGINS_DIR)/vim-lsp.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/coc.vim $(NVIM_PLUGINS_DIR)/coc.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/neosnippet.vim $(NVIM_PLUGINS_DIR)/neosnippet.vim
 	ln -sf $(SELF_NVIM_PLUGINS_DIR)/fzf.vim $(NVIM_PLUGINS_DIR)/fzf.vim
+	ln -sf $(SELF_NVIM_PLUGINS_DIR)/ddu.vim $(NVIM_PLUGINS_DIR)/ddu.vim
 	ln -sf $(SELF_NVIM_SNIPPETS_DIR)/rust.snip $(NVIM_SNIPPETS_DIR)/rust.snip
 
 .PHONY: nvim-cache-clean
