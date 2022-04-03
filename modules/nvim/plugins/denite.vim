@@ -27,10 +27,8 @@ call denite#custom#option('default', {
 
 
 
-" denite-menu の設定
 let s:menus = {}
 
-" Denite menu:dotfile をすると開くファイルを登録する
 let s:menus.dotfile = {
     \ 'description': 'Edit your dotfile'
     \ }
@@ -42,8 +40,6 @@ let s:menus.dotfile.file_candidates = [
     \ ]
 
 
-" Denite menu:my_denites をすると開くファイルを登録する
-" コマンドを呼ぶ
 let s:menus.my_denites = {
     \ 'description': 'Denite list'
     \ }
@@ -53,7 +49,6 @@ let s:menus.my_denites.command_candidates = [
       \    ['grep', 'Denite grep'],
       \]
 
-" 登録
 call denite#custom#var('menu', 'menus', s:menus)
 
 
