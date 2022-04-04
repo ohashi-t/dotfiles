@@ -18,7 +18,7 @@ if executable('rg')
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'ctrl-k:kill-line,Up:Preview-up,Down:preview-down,change:reload:'.reload_command]}
     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endfunction
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
@@ -68,9 +68,3 @@ endfunction
 command -nargs=* LCd call LsAndCd()
 
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif
-
-
-let g:mapleader = "\<Space>"
-nnoremap <Leader>i :CGD<CR>
-vnoremap <Leader>g :call FZGitGrepRange()<CR>
-nnoremap <Leader>g :RG<CR>
