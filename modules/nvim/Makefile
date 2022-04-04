@@ -24,6 +24,7 @@ nvim-install:
 	mkdir -p $(NVIM_SNIPPETS_DIR)
 	mkdir -p $(NVIM_TOML_DIR)
 	ln -sf $(SELF_NVIM_DIR)/init.vim $(NVIM_DIR)/init.vim
+	ln -sf $(SELF_NVIM_DIR)/my_session.vim $(NVIM_DIR)/my_session.vim
 	ln -sf $(SELF_NVIM_TOML_DIR)/dein.toml $(NVIM_TOML_DIR)/dein.toml
 	ln -sf $(SELF_NVIM_TOML_DIR)/dein_lazy.toml $(NVIM_TOML_DIR)/dein_lazy.toml
 	ln -sf $(SELF_NVIM_TOML_DIR)/ddc_with_depends.toml $(NVIM_TOML_DIR)/ddc_with_depends.toml
