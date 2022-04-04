@@ -29,10 +29,15 @@ if dein#check_install()
   call dein#install()
 endif
 
+let g:mapleader = "\<Space>"
+nnoremap <Leader>i :CGD<CR>
+
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 nnoremap <silent> <leader>y :Defx<CR>
 nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
 nnoremap <silent> <Leader>j :call LsAndCd()<CR>
+vnoremap <Leader>g :call FZGitGrepRange()<CR>
+nnoremap <Leader>g :RG<CR>
 
 source ~/.vimrc
