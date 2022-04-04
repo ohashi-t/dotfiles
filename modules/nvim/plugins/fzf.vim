@@ -13,6 +13,8 @@ endif
 
 if executable('rg')
   function! FZGrep(query, fullscreen)
+    execute 'cd ' . system('git rev-parse --show-toplevel 2>/dev/null || echo $HOME')
+
     let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
@@ -21,23 +23,13 @@ if executable('rg')
   endfunction
   command! -nargs=* -bang RG call FZGrep(<q-args>, <bang>0)
 
-  function! FZGitGrep(query, fullscreen)
-    execute 'cd ' . system('git rev-parse --show-toplevel')
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-  endfunction
-  command! -nargs=* -bang RGG call FZGitGrep(<q-args>, <bang>0)
-
   function! FZGitGrepRange() range
     let tmp = @@
     silent normal gvy
     let selected = @@
     let @@ = tmp
     echo selected
-    call FZGitGrep(selected, 0)
+    call FZGrep(selected, 0)
   endfunction
 endif
 
@@ -76,3 +68,9 @@ endfunction
 command -nargs=* LCd call LsAndCd()
 
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif
+
+
+let g:mapleader = "\<Space>"
+nnoremap <Leader>i :CGD<CR>
+vnoremap <Leader>g :call FZGitGrepRange()<CR>
+nnoremap <Leader>g :RG<CR>
