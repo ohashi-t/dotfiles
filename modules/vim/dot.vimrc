@@ -36,7 +36,8 @@ nnoremap <Leader>l :FloadSession<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
-" let g:mapleader = "s"
+let g:mapleader = "s"
+nnoremap <silent> <Leader>ld :<C-u>bdelete<CR>
 
 syntax enable
 

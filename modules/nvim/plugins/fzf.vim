@@ -71,9 +71,12 @@ command -nargs=* LCd call LsAndCd()
 
 
 let g:mapleader = "s"
-nnoremap <silent> <Leader>j :call LsAndCd()<CR>
-vnoremap <silent> <Leader>g :call FZGitGrepRange()<CR>
-nnoremap <silent> <Leader>g :RG<CR>
+nnoremap <silent> <Leader>j :<C-u>call LsAndCd()<CR>
+vnoremap <silent> <Leader>g :<C-u>call FZGitGrepRange()<CR>
+nnoremap <silent> <Leader>g :<C-u>RG<CR>
+nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
+nnoremap <silent> <Leader>lf :<C-u>GFiles<CR>
+nnoremap <silent> <Leader>l? :<C-u>GFiles?<CR>
 
 let g:mapleader = "\<Space>"
 nnoremap <silent> <Leader>i :CGD<CR>
