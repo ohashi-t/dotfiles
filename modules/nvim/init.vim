@@ -30,3 +30,4 @@ if dein#check_install()
 endif
 
 source ~/.vimrc
+source ~/.config/nvim/my_session.vim
