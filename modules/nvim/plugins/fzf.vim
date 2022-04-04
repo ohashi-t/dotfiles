@@ -68,3 +68,12 @@ endfunction
 command -nargs=* LCd call LsAndCd()
 
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | LCd | endif
+
+
+let g:mapleader = "s"
+nnoremap <silent> <Leader>j :call LsAndCd()<CR>
+vnoremap <silent> <Leader>g :call FZGitGrepRange()<CR>
+nnoremap <silent> <Leader>g :RG<CR>
+
+let g:mapleader = "\<Space>"
+nnoremap <silent> <Leader>i :CGD<CR>

@@ -65,3 +65,8 @@ function! s:defx_my_settings() abort
 endfunction
 
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Defx -columns=git:mark:filename:type | endif
+
+
+let g:mapleader = "s"
+nnoremap <silent> <leader>y :Defx<CR>
+nnoremap <silent> <leader>t :Defx -columns=git:mark:filename:type<CR>
