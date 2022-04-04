@@ -36,11 +36,6 @@ nnoremap <Leader>l :FloadSession<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
-" defined in nvim/plugins/fzf.vim
-nnoremap <Leader>r :CGD<CR>
-vnoremap <Leader>e :call FZGitGrepRange()<CR>
-
-
 " let g:mapleader = "s"
 
 syntax enable

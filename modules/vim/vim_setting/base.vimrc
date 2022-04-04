@@ -25,8 +25,10 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-set autochdir
 "set timeoutlen=10
+
+" fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
+" set autochdir
 
 noremap <Down> <Nop>
 noremap <Up> <Nop>
