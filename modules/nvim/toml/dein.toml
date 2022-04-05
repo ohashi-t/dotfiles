@@ -76,6 +76,9 @@ let g:EasyMotion_smartcase = 1
 repo = 'tpope/vim-rails'
 
 [[plugins]]
+repo = 'tpope/vim-bundler'
+
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 branch = 'release'
 build = 'coc#util#install()'

@@ -24,6 +24,9 @@ inoremap <buffer> <Space> <Space><C-g>u
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
+" tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
+" let g:mapleader = "s"
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 nnoremap <Leader>n :Cnext<CR>
@@ -35,8 +38,5 @@ nnoremap <Leader>s :SaveSession
 nnoremap <Leader>l :FloadSession<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
-
-let g:mapleader = "s"
-nnoremap <silent> <Leader>ld :<C-u>bdelete<CR>
 
 syntax enable
