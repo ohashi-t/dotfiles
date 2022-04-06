@@ -64,6 +64,9 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+hook_source = '''
+source ~/.config/nvim/plugins/lexima.vim
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
