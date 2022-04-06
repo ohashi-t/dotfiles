@@ -38,7 +38,6 @@ inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 inoremap <Left> <Nop>
-inoremap <BS> <C-l>
 
 " 以下画面中央の行にフォーカスするための設定集
 augroup StartAtMiddleLine
