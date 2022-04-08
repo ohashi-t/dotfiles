@@ -30,6 +30,12 @@ set helplang=ja
 " fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
 " set autochdir
 
+
+
+
+" inoremapにしたいけどleximaの<BS>でカッコのペア削除されなかったので
+imap <C-h> <BS>
+
 noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
