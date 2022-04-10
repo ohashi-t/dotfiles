@@ -1,5 +1,6 @@
 #!/bin/bash
 
-rg 'gem "solargraph"' ./Gemfile || gsed -iE '/^group :development do$/a gem "solargraph"' ./Gemfile && bundle install
+rg 'BUNDLE_*BIN:' ./.bundle/config || echo "BUNDLE_BIN: vendor/bin" >>./.bundle/config
+rg 'gem "solargraph"' ./Gemfile || gsed -iE '/^group :development do$/a gem "solargraph"' ./Gemfile && bundle install && solargraph bundle
 test -e ./GemfileE && rm ./GemfileE
-solargraph bundle
+
