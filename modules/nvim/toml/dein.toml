@@ -64,6 +64,9 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+hook_source = '''
+source ~/.config/nvim/plugins/lexima.vim
+'''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -74,6 +77,9 @@ let g:EasyMotion_smartcase = 1
 
 [[plugins]]
 repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo = 'tpope/vim-bundler'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'

@@ -69,7 +69,8 @@ set softtabstop=2
 "noremap <C-S-c> "*y
 "noremap <C-S-v> "*P
 
-let g:mapleader = "\<Space>"
+" let g:mapleader = "\<Space>"
 set easymotion
-map <Leader> <Plug>(easymotion-prefix)
+" map <Leader> <Plug>(easymotion-prefix)
+nmap ? <Plug>(easymotion-s2)
 set surround

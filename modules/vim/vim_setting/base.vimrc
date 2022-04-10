@@ -25,8 +25,16 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-set autochdir
 "set timeoutlen=10
+
+" fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
+" set autochdir
+
+
+
+
+" inoremapにしたいけどleximaの<BS>でカッコのペア削除されなかったので
+imap <C-h> <BS>
 
 noremap <Down> <Nop>
 noremap <Up> <Nop>
@@ -36,7 +44,6 @@ inoremap <Down> <Nop>
 inoremap <Up> <Nop>
 inoremap <Right> <Nop>
 inoremap <Left> <Nop>
-inoremap <BS> <C-l>
 
 " 以下画面中央の行にフォーカスするための設定集
 augroup StartAtMiddleLine
