@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rg 'gem "solargraph"' ./Gemfile || gsed -iE '/^group :development do$/a gem "solargraph"' ./Gemfile && bundle install
+test -e ./GemfileE && rm ./GemfileE
+solargraph bundle
