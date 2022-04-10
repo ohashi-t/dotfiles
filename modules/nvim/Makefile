@@ -33,7 +33,6 @@ $(foreach source, $(SELF_NVIM_FILES), \
 		) \
 	) \
 )
-$(warning MAKE = $(NVIM_TARGETS))
 
 $(foreach source, $(SELF_NVIM_PLUGIN_FILES), \
 	$(eval \
@@ -58,7 +57,7 @@ $(foreach source, $(SELF_NVIM_SNIPPET_FILES), \
 $(foreach source, $(SELF_NVIM_TOML_FILES), \
 	$(eval \
 		$(call \
-			nvim-rule \
+			nvim-rule, \
 			$(NVIM_TOML_DIR)/$(notdir $(source)), \
 			$(source) \
 		) \
