@@ -11,6 +11,28 @@ if executable('rroute')
   inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
 endif
 
+function! s:parse_route(selected)
+  let l:squished = substitute(join(a:selected), '^\s\+', '', '')
+  return split(l:squished)[0] . '_path'
+endfunction
+
+function! Abba(words) abort
+  let l:cccc = systemlist('gsed -E "s/a/b/g" '.a:words)[0]
+  echo l:cccc
+endfunction
+command! -nargs=1 -bang ABBA call Abba(<f-args>)
+
+if executable('bundle')
+  function! RailsRoute() abort
+    let l:git_root_path = systemlist('git rev-parse --show-toplevel')[0]
+    echo l:git_root_path
+    call fzf#run({
+          \'source': 'cat '.l:git_root_path.'/vendor/rails_routes.txt | gsed -E "s/\(.*\)//g" | gsed -E "s/ //g"',
+          \'sink': 'ABBA'
+          \})
+  endfunction
+endif
+
 if executable('rg')
   function! FZGrep(query, fullscreen)
     execute 'cd ' . system('git rev-parse --show-toplevel 2>/dev/null || echo $HOME')
