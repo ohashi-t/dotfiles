@@ -200,8 +200,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
 let g:coc_config_home = expand('~/.config/nvim')
+let g:coc_disable_transparent_cursor = 1
 let g:coc_global_extensions = [
     \'coc-prettier',
     \'coc-eslint',
