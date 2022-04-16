@@ -25,7 +25,9 @@ command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
-" let g:mapleader = "s"
+let g:mapleader = "s"
+nnoremap <Leader> <Nop>
+vnoremap <Leader> <Nop>
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
