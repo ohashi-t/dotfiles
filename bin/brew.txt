@@ -38,6 +38,7 @@ reattach-to-user-namespace
 ricty
 ripgrep
 rlwrap
+rust-analizer
 source-highlight
 stunnel
 the_silver_searcher

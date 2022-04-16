@@ -201,11 +201,12 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+let g:coc_config_home = expand('~/.config/nvim')
 let g:coc_global_extensions = [
     \'coc-prettier',
     \'coc-eslint',
     \'coc-solargraph',
     \'coc-json',
-    \'coc-rls',
+    \'coc-rust-analyzer',
     \]
     " \'coc-vetur',
