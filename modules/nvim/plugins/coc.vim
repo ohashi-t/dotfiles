@@ -204,8 +204,8 @@ let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = [
     \'coc-prettier',
     \'coc-eslint',
-    \'coc-vetur',
     \'coc-solargraph',
     \'coc-json',
     \'coc-rls',
     \]
+    " \'coc-vetur',
