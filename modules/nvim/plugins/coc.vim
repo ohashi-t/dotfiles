@@ -208,5 +208,6 @@ let g:coc_global_extensions = [
     \'coc-solargraph',
     \'coc-json',
     \'coc-rust-analyzer',
+    \'coc-vimlsp',
     \]
     " \'coc-vetur',
