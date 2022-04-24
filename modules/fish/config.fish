@@ -142,6 +142,7 @@ function peco_ghq
     end
 end
 function fish_user_key_bindings
+    bind \cl ''
     bind \cr 'peco_select_history (commandline -b)'
     bind \co peco_ghq
     bind \cq fzf_z
