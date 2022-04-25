@@ -1,6 +1,6 @@
 inoremap <expr> <C-l><C-r> fzf#vim#complete({
       \'source': 'cat '.systemlist('git rev-parse --show-toplevel')[0].'/vendor/rails_routes.txt',
-      \'reducer': { lines -> split(trim(lines[0]), ' ')[0] },
+      \'reducer': { lines -> split(trim(lines[0]), ' ')[0].'_path' },
       \})
 " function! RRoute() abort
 "   if !executable('rroute')
