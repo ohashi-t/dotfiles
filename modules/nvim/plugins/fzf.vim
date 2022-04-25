@@ -1,15 +1,19 @@
-function! RRoute() abort
-  if !executable('rroute')
-    echo "can't execute this command..."
-    return -1
-  endif
-  call fzf#run({'source': 'rroute'})
-endfunction
-command! -nargs=0 -bang RRR call RRoute()
+inoremap <expr> <C-l><C-r> fzf#vim#complete({
+      \'source': 'cat '.systemlist('git rev-parse --show-toplevel')[0].'/vendor/rails_routes.txt',
+      \'reducer': { lines -> split(trim(lines[0]), ' ')[0] },
+      \})
+" function! RRoute() abort
+"   if !executable('rroute')
+"     echo "can't execute this command..."
+"     return -1
+"   endif
+"   call fzf#run({'source': 'rroute'})
+" endfunction
+" command! -nargs=0 -bang RRR call RRoute()
 
-if executable('rroute')
-  inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
-endif
+" if executable('rroute')
+"   inoremap  <expr> <c-x><c-r> fzf#vim#complete({'source': 'rroute'})
+" endif
 
 function! s:parse_route(selected)
   let l:squished = substitute(join(a:selected), '^\s\+', '', '')
