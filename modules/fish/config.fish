@@ -136,8 +136,8 @@ function peco_ghq
     #end
     ghq list --full-path | fzf | read recent
     if [ $recent ]
-        cd_and_ls $recent
-        #commandline -r ''
+        #cd_and_ls $recent
+        cd $recent && infinity_cd
         commandline -f repaint
     end
 end
