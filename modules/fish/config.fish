@@ -136,12 +136,13 @@ function peco_ghq
     #end
     ghq list --full-path | fzf | read recent
     if [ $recent ]
-        cd_and_ls $recent
-        #commandline -r ''
+        #cd_and_ls $recent
+        cd $recent && infinity_cd
         commandline -f repaint
     end
 end
 function fish_user_key_bindings
+    bind \cl ''
     bind \cr 'peco_select_history (commandline -b)'
     bind \co peco_ghq
     bind \cq fzf_z
