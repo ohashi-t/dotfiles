@@ -38,6 +38,7 @@ nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s :SaveSession 
 nnoremap <Leader>l :FloadSession<CR>
+nnoremap <Leader>e :windo edit<CR><C-w><C-w>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
