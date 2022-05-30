@@ -1,3 +1,18 @@
+# tips: moduleを生成したいパスをkey/valueで指定する
+target_dir = [
+  {
+    app: [
+      :controllers,
+      :models,
+      :workers,
+      :loyalties,
+      :helpers,
+      :services
+    ]
+  },
+  :lib,
+]
+
 def deep_group_by(obj)
   return nil if obj.blank?
 
@@ -27,32 +42,29 @@ def make_paths(target_dir)
     !obj.is_a?(Hash) ?
     obj.to_s :
     obj.map { |k, values| values.map { |v| "#{k}/#{v}" } }
-  end.flatten
+  end.
+  flatten
 end
 
-target_dir = [
-  { app: [:controllers, :models, :workers, :loyalties, :helpers, :services] },
-  :lib,
-]
-
-bbb = make_paths(target_dir).reduce([]) do |result, path|
+dir_paths = make_paths(target_dir).reduce([]) do |result, path|
   result | Dir.glob("#{path}/**/").
-           map { |u| u.gsub(/#{path}\//, "") }.
+           map { |o| o.gsub(/#{path}\//, "") }.
            map { |o| o.gsub(/\/$/, "") }
 end.reject(&:blank?)
 
-files = make_paths(target_dir).reduce([]) do |result, path|
+file_paths = make_paths(target_dir).reduce([]) do |result, path|
   result | Dir.glob("#{path}/**/*.rb").
-           map { |u| u.gsub(/\..*$/, "") }.
-           map { |u| u.gsub(/#{path}\//, "") }
+           map { |o| o.gsub(/\..*$/, "") }.
+           map { |o| o.gsub(/#{path}\//, "") }
 end
 
-ccc = (bbb - files).map{|o| o.split("/") }.
+target_modules = (dir_paths - file_paths).
+  map{ |o| o.split("/") }.
   then { |o| deep_group_by(o) }.
   then { |o| to_module(o) }
 
 File.open(Rails.root.join("lib/rails_module_paths.rb"), "w") do |f|
-  f.puts(ccc)
+  f.puts(target_modules)
 end
 puts "finished!!!!"
 
