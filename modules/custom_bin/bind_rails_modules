@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eux
+
+script_dir=$(cd $(dirname $0); pwd)
+echo "${script_dir}/rails_modules.rb"
+bundle exec rails runner "${script_dir}/rails_modules.rb"
