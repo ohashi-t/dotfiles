@@ -13,16 +13,16 @@ target_dir = [
   :lib,
 ]
 
-def deep_group_by(obj)
+def deep_group_by(obj, depth = 0)
+  raise StandardError if depth > 50
   return nil if obj.blank?
 
   obj.group_by(&:first).
     to_h do |k, v|
       [
         k.to_sym,
-        v.map { |t| t[1..].presence }.
-          compact.
-          then { |o| deep_group_by(o) },
+        v.filter_map { |t| t[1..].presence }.
+          then { |o| deep_group_by(o, depth + 1) },
       ]
     end
 end
@@ -39,9 +39,9 @@ end
 
 def make_paths(target_dir)
   target_dir.map do |obj|
-    !obj.is_a?(Hash) ?
-    obj.to_s :
-    obj.map { |k, values| values.map { |v| "#{k}/#{v}" } }
+    obj.is_a?(Hash) ?
+    obj.map { |k, values| values.map { |v| "#{k}/#{v}" } } :
+    obj.to_s
   end.
   flatten
 end
@@ -59,7 +59,7 @@ file_paths = make_paths(target_dir).reduce([]) do |result, path|
 end
 
 target_modules = (dir_paths - file_paths).
-  map{ |o| o.split("/") }.
+  map { |o| o.split("/") }.
   then { |o| deep_group_by(o) }.
   then { |o| to_module(o) }
 
