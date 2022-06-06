@@ -106,3 +106,11 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 let g:gitgutter_set_sign_backgrounds = 1
 '''
 
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = '''
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
+'''

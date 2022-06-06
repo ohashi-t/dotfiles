@@ -41,8 +41,6 @@ endfunction
 
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
-nnoremap <Leader>n :Cnext<CR>
-nnoremap <Leader>N :Cprev<CR>
 nnoremap <Leader>/ :call <SID>ShortGrep("")<Left><Left>
 nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
@@ -51,5 +49,11 @@ nnoremap <Leader>l :FloadSession<CR>
 nnoremap <Leader>e :windo edit<CR><C-w><C-w>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
+
+" https://zenn.dev/mattn/articles/83c2d4c7645faaより拝借
+nmap <leader>n :Cnext<CR><SID><leader>
+nmap <leader>N :Cprev<CR><SID><leader>
+nnoremap <script> <SID><leader>n :Cnext<CR><SID><leader>
+map <SID><leader> <Nop>
 
 syntax enable
