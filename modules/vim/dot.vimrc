@@ -29,12 +29,19 @@ let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
 
+function! s:ShortGrep(word)
+  let l:current_dir = trim(execute('pwd'))
+  execute 'cd '.system('git rev-parse --show-toplevel 2>/dev/null || echo $PWD')
+  execute('grep '.a:word.' '.'`git ls-files`')
+  cw
+  execute 'cd '.l:current_dir
+endfunction
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 nnoremap <Leader>n :Cnext<CR>
 nnoremap <Leader>N :Cprev<CR>
-" TODO: for文で何とかしたいが分からん
-nnoremap <Leader>/ :vimgrep<Space>/\V/<Space>`git ls-files`<Space>\|<Space>cw<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <Leader>/ :call <SID>ShortGrep("")<Left><Left>
 nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s :SaveSession 

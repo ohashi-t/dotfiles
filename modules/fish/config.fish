@@ -24,8 +24,6 @@ alias be 'bundle exec'
 alias j 'cd_and_ls'
 alias fzf 'fzf --bind=ctrl-k:kill-line,Up:preview-up,Down:preview-down'
 
-abbr -a cd j instead of cd
-
 #TODO 直前のコマンドが失敗した場合に履歴に登録しない（登録を削除する）
 #function failed_not_save_history
     #history delete -Ce (history | sed -n 1p)
