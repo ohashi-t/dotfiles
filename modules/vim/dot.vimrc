@@ -33,6 +33,8 @@ function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))
   execute 'cd '.system('git rev-parse --show-toplevel 2>/dev/null || echo $PWD')
   execute('grep '.a:word.' '.'`git ls-files`')
+  " 外部コマンド実行後の待機をキャンセル出来る
+  redraw
   cw
   execute 'cd '.l:current_dir
 endfunction
