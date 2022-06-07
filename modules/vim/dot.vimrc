@@ -30,6 +30,9 @@ command! Cprev try | cprev | catch | clast | catch | endtry
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
+if !has('nvim')
+  nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
+endif
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))
