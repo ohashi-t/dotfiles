@@ -5,6 +5,8 @@ runtime macros/matchit.vim
 
 set shell=/bin/bash
 
+set suffixesadd+=.vue,.js,.ts
+
 if filereadable(expand('~/.config/vim_setting/base.vimrc'))
   source ~/.config/vim_setting/base.vimrc
 endif
