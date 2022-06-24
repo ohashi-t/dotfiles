@@ -26,11 +26,18 @@ inoremap <buffer> <Space> <Space><C-g>u
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
+function! s:ApplyWebpackerAdditionalPaths()
+  if 0 == ('$(git rev-parse --show-toplevel)/config/webpacker.yml; echo $?')
+    echo 'debug_check'
+  endif
+endfunction
+
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
 nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
+nnoremap <Leader><Leader>U :call <SID>ApplyWebpackerAdditionalPaths()<CR>
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))
