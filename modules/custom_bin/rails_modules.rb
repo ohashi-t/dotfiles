@@ -18,13 +18,15 @@ def deep_group_by(obj, depth = 0)
   return nil if obj.blank?
 
   obj.group_by(&:first).
-    to_h do |k, v|
-      [
-        k.to_sym,
-        v.filter_map { |t| t[1..].presence }.
-          then { |o| deep_group_by(o, depth + 1) },
-      ]
-    end
+    transform_keys(&:to_sym).
+    transform_values { |v| v.filter_map { |t| t[1..].presence }.then { |o| deep_group_by(o, depth + 1) } }
+    # to_h do |k, v|
+    #   [
+    #     k.to_sym,
+    #     v.filter_map { |t| t[1..].presence }.
+    #       then { |o| deep_group_by(o, depth + 1) },
+    #   ]
+    # end
 end
 
 def to_module(obj, depth = 0)
@@ -37,6 +39,7 @@ def to_module(obj, depth = 0)
   end.join("\n")
 end
 
+# TODO: 再帰に変更してネストされたパスに対応する
 def make_paths(target_dir)
   target_dir.map do |obj|
     obj.is_a?(Hash) ?

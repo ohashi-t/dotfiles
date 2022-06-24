@@ -26,11 +26,27 @@ inoremap <buffer> <Space> <Space><C-g>u
 command! Cnext try | cnext | catch | cfirst | catch | endtry
 command! Cprev try | cprev | catch | clast | catch | endtry
 
+function! s:ApplyWebpackerAdditionalPaths()
+  " 出来なくは無いけどやってる暇無いんでベタ書き
+  let l:target_dir = '/app/javascript/packs'
+  if 0 != system('test -e $(git rev-parse --show-toplevel)'.l:target_dir.'; echo $?')
+    echo 'target_path not found...' | return
+  endif
+  execute('set path+='.trim(systemlist('echo $(git rev-parse --show-toplevel)'.l:target_dir)[0]))
+  echo 'append_target_path done!'
+
+  " if 0 != system('test -e $(git rev-parse --show-toplevel)/config/webpacker.yml; echo $?')
+  "   echo 'can't find webpacker.yml' | return
+  " endif
+  " TODO: additional_paths記載行の配列をparseして読み込む
+endfunction
+
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
 nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
+nnoremap <Leader><Leader>U :call <SID>ApplyWebpackerAdditionalPaths()<CR>
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))
