@@ -39,6 +39,7 @@ def to_module(obj, depth = 0)
   end.join("\n")
 end
 
+# TODO: 再帰に変更してネストされたパスに対応する
 def make_paths(target_dir)
   target_dir.map do |obj|
     obj.is_a?(Hash) ?
