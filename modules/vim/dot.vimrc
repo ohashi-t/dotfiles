@@ -41,12 +41,22 @@ function! s:ApplyWebpackerAdditionalPaths()
   " TODO: additional_paths記載行の配列をparseして読み込む
 endfunction
 
+function! s:ApplyEsLintCurrentFile()
+  " if 0 != system('./node_modules/.bin/eslint app/javascript/packs/pages/project/overviews/summary_report.vue --fix')
+  let l:current_full_path = trim(execute('pwd')).'/'.expand('%')
+  echo l:current_full_path
+  if 0 != system('$(git rev-parse --show-toplevel)/node_modules/.bin/eslint ' . l:current_full_path . ' --fix')
+
+  
+endfunction
+
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
 nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
 nnoremap <Leader><Leader>U :call <SID>ApplyWebpackerAdditionalPaths()<CR>
+nnoremap <Leader><Leader>e :call <SID>ApplyEsLintCurrentFile()<CR>
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))

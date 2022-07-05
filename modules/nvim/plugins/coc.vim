@@ -211,3 +211,4 @@ let g:coc_global_extensions = [
     \'coc-vimlsp',
     \]
     " \'coc-vetur',
+command! -nargs=0 PPrettier :call CocAction('runCommand', 'prettier.formatFile')
