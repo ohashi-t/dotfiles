@@ -42,12 +42,15 @@ function! s:ApplyWebpackerAdditionalPaths()
 endfunction
 
 function! s:ApplyEsLintCurrentFile()
-  " if 0 != system('./node_modules/.bin/eslint app/javascript/packs/pages/project/overviews/summary_report.vue --fix')
   let l:current_full_path = trim(execute('pwd')).'/'.expand('%')
-  echo l:current_full_path
-  if 0 != system('$(git rev-parse --show-toplevel)/node_modules/.bin/eslint ' . l:current_full_path . ' --fix')
+  let l:eslint_path = system('echo -n $(git rev-parse --show-toplevel)/node_modules/.bin/eslint')
 
-  
+  call system('test -L ' . l:eslint_path)
+  if v:shell_error | echo "eslint is not found in node_modules path." | return | endif
+
+  echo "waiting..."
+  call system(l:eslint_path . ' ' . l:current_full_path . ' --fix')
+  edit! | redraw | echo "eslint fix for current file finish!"
 endfunction
 
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
