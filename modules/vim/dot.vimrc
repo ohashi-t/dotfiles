@@ -41,12 +41,25 @@ function! s:ApplyWebpackerAdditionalPaths()
   " TODO: additional_paths記載行の配列をparseして読み込む
 endfunction
 
+function! s:ApplyEsLintCurrentFile()
+  let l:current_full_path = trim(execute('pwd')).'/'.expand('%')
+  let l:eslint_path = system('echo -n $(git rev-parse --show-toplevel)/node_modules/.bin/eslint')
+
+  call system('test -L ' . l:eslint_path)
+  if v:shell_error | echo "eslint is not found in node_modules path." | return | endif
+
+  echo "waiting..."
+  call system(l:eslint_path . ' ' . l:current_full_path . ' --fix')
+  edit! | redraw | echo "eslint fix for current file finish!"
+endfunction
+
 " tips: mapleaderが"\<Space>"の設定記述の上に"s"の設定を記述
 let g:mapleader = "s"
 nnoremap <Leader> <Nop>
 vnoremap <Leader> <Nop>
 nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
 nnoremap <Leader><Leader>U :call <SID>ApplyWebpackerAdditionalPaths()<CR>
+nnoremap <Leader><Leader>e :call <SID>ApplyEsLintCurrentFile()<CR>
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))

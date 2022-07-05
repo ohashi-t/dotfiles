@@ -272,7 +272,7 @@ if [ -z "$TMUX" ] && status --is-login
     source /tmp/pyenv_init.cache
     #pyenv init - | source
 
-    set -x PATH $HOME/.npm-global/bin $PATH
+    # set -x PATH $HOME/.npm-global/bin $PATH
     set -x PATH $HOME/.cargo/bin $PATH
 
     set -x CUSTOM_PATH $PATH
