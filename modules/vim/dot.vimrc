@@ -86,6 +86,13 @@ function! s:ShortGrep(word)
   execute 'cd '.l:current_dir
 endfunction
 
+function! s:TurnBackWindoEdit()
+  let l:prev_winnr = winnr()
+  windo edit
+  exe l:prev_winnr .. "wincmd w"
+  norm zz
+endfunction
+
 let g:mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 nnoremap <Leader>/ :call <SID>ShortGrep("")<Left><Left>
@@ -93,11 +100,11 @@ nnoremap <Leader>h :set relativenumber!<CR>
 nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s :SaveSession 
 nnoremap <Leader>l :FloadSession<CR>
-nnoremap <Leader>e :windo edit<CR><C-w><C-w>
+nnoremap <Leader>e :call <SID>TurnBackWindoEdit()<CR>
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
-" https://zenn.dev/mattn/articles/83c2d4c7645faaより拝借
+" https://zenn.dev/mattn/articles/83c2d4c7645faaから拝借
 nmap <leader>n :Cnext<CR><SID><leader>
 nmap <leader>N :Cprev<CR><SID><leader>
 nnoremap <script> <SID><leader>n :Cnext<CR><SID><leader>

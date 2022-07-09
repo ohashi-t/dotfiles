@@ -16,10 +16,9 @@ command! -nargs=0 AutoSaveSession call s:autoSaveSession()
 
 function! s:autoLoadSession() abort
   let l:file_name = s:session_path . '/' . tr(trim(system('git rev-parse --show-toplevel')), "/", "_") . '_0.vim'
-   if filereadable(l:file_name)
-     execute 'silent source' l:file_name
-     return
-   endif
+  if !filereadable(l:file_name) | echo "previous session is unloadable..." | return | endif
+
+  execute 'silent source' l:file_name
 endfunction
 command! -nargs=0 AutoLoadSession call s:autoLoadSession()
 
