@@ -3,4 +3,5 @@
 rg 'BUNDLE_*BIN:' ./.bundle/config || echo "BUNDLE_BIN: vendor/bin" >>./.bundle/config
 rg 'gem "solargraph' ./Gemfile || gsed -iE '/^group :development do$/a gem "solargraph-rails"' ./Gemfile && bundle install && echo "running 'yard gems'"; yard gems; echo "running 'solargraph bundle'"; solargraph bundle
 test -e ./GemfileE && rm ./GemfileE
+test -f ~/.anyenv/envs/rbenv/shims/yarn && rm ~/.anyenv/envs/rbenv/shims/yarn
 
