@@ -41,15 +41,29 @@ function! s:ApplyWebpackerAdditionalPaths()
   " TODO: additional_paths記載行の配列をparseして読み込む
 endfunction
 
-function! s:ApplyEsLintCurrentFile()
-  let l:current_full_path = trim(execute('pwd')).'/'.expand('%')
+" TODO: ApplyEsLintCurrentFile関数と引数で対象ファイルを指定するようにして共通化したい
+function! s:ApplyEsLintGitStatusFiles()
   let l:eslint_path = system('echo -n $(git rev-parse --show-toplevel)/node_modules/.bin/eslint')
-
   call system('test -L ' . l:eslint_path)
   if v:shell_error | echo "eslint is not found in node_modules path." | return | endif
 
+  let l:git_status_files = systemlist('git status -s | gsed -E "s;^.*\s;;g" | gsed -nE "/.(js|vue)$/p"')
+
   echo "waiting..."
-  call system(l:eslint_path . ' ' . l:current_full_path . ' --fix')
+  call system(l:eslint_path . ' --fix ' . join(l:git_status_files))
+  windo edit! | redraw | echo "eslint fix for target files by [git status] finish!"
+endfunction
+
+" TODO: ApplyEsLintGitStatusFiles関数と引数で対象ファイルを指定するようにして共通化したい
+function! s:ApplyEsLintCurrentFile()
+  let l:eslint_path = system('echo -n $(git rev-parse --show-toplevel)/node_modules/.bin/eslint')
+  call system('test -L ' . l:eslint_path)
+  if v:shell_error | echo "eslint is not found in node_modules path." | return | endif
+
+  let l:current_full_path = trim(execute('pwd')).'/'.expand('%')
+
+  echo "waiting..."
+  call system(l:eslint_path . ' --fix ' . l:current_full_path)
   edit! | redraw | echo "eslint fix for current file finish!"
 endfunction
 
@@ -60,6 +74,7 @@ vnoremap <Leader> <Nop>
 nnoremap <Leader><Leader>u :execute('set path+='.trim(execute('pwd')))
 nnoremap <Leader><Leader>U :call <SID>ApplyWebpackerAdditionalPaths()<CR>
 nnoremap <Leader><Leader>e :call <SID>ApplyEsLintCurrentFile()<CR>
+nnoremap <Leader><Leader>E :call <SID>ApplyEsLintGitStatusFiles()<CR>
 
 function! s:ShortGrep(word)
   let l:current_dir = trim(execute('pwd'))
