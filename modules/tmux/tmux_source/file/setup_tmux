@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -eux
+
+# tmux new -s main
+# tmux attach -t main
+
+# tmux split-window -h -p 50
+# tmux split-window -v -c '#{pane_current_path}'
+# tmux select-pane -t 0
+# tmux split-window -v -c '#{pane_current_path}'
+
+# session_name = "~/.ghq/github.com/UUUM/herokura"
+path_name="~/.ghq/github.com/ohashi-t/dotfiles"
+session_name=$(echo $path_name | gsed -E 's;(~|\.);_;g')
+echo session_name:${session_name}
+
+tmux new-session -s ${session_name}
+tmux attach -t ${session_name}
+
+tmux new-window
+# tmux new-window
+# tmux new-window
+# tmux new-window
+
+# tmux send-keys -t 1 "cd ${path_name}" C-m
+# tmux send-keys -t 2 "cd ${path_name}" C-m
+# tmux send-keys -t 3 "cd ${path_name}" C-m
+# tmux send-keys -t 4 "cd ${path_name}" C-m
+# tmux send-keys -t 5 "cd ${path_name}" C-m

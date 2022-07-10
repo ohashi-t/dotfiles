@@ -18,3 +18,4 @@ tmux-install:
 		mkdir -p $(TMUX_SOURCE_FILE_DIR)
 		mkdir -p $(TMUX_SOURCE_HOOK_DIR)
 		ln -sf $(SELF_TMUX_SOURCE_FILE_DIR)/at_terminal_starting.conf $(TMUX_SOURCE_FILE_DIR)/at_terminal_starting.conf
+		ln -sf $(SELF_TMUX_SOURCE_FILE_DIR)/setup_tmux $(TMUX_SOURCE_FILE_DIR)/setup_tmux

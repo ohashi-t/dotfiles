@@ -234,6 +234,13 @@ function pcp
 end
 
 function tmux_setup
+    # TODO[replace shell script]
+    
+    # if [ -z "$IS_TMUX_STARTED" ]
+
+    # if [ -z "$TMUX" ]
+    #     # set -x IS_TMUX_STARTED "true"
+    #     $HOME/.config/tmux_source/file/setup_tmux $MY_TMUX_STARTING_PATH
     if [ -z "$TMUX" ]
         tmux new -s main \; source-file $HOME/.config/tmux_source/file/at_terminal_starting.conf
     else
@@ -281,4 +288,5 @@ if [ -z "$TMUX" ] && status --is-login
     tmux_setup
 else if [ -n "$CUSTOM_PATH" ]
     set -x PATH $CUSTOM_PATH
+    # set -x IS_TMUX_STARTED $IS_TMUX_STARTED
 end
