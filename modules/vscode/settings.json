@@ -6,7 +6,6 @@
     "files.exclude": {
         "**/.git": false
     },
-    "window.zoomLevel": 0,
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.vimrc",
     "files.watcherExclude": {
