@@ -101,6 +101,8 @@ nnoremap <Leader>j :set tabstop=2 shiftwidth=2<CR>
 nnoremap <Leader>s :SaveSession 
 nnoremap <Leader>l :FloadSession<CR>
 nnoremap <Leader>e :call <SID>TurnBackWindoEdit()<CR>
+nnoremap <Leader>B hn:s;<C-R>/;;<Left>
+nnoremap <Leader>b n&
 noremap <Leader><C-l> <C-l>
 noremap <C-l> <Nop>
 
@@ -108,6 +110,10 @@ noremap <C-l> <Nop>
 nmap <leader>n :Cnext<CR><SID><leader>
 nmap <leader>N :Cprev<CR><SID><leader>
 nnoremap <script> <SID><leader>n :Cnext<CR><SID><leader>
+nnoremap <script> <SID><leader>N :Cprev<CR><SID><leader>
+
+nmap <leader>b n&<SID><leader>
+nnoremap <script> <SID><leader>b n&<SID><leader>
 map <SID><leader> <Nop>
 
 syntax enable
