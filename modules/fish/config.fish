@@ -259,7 +259,7 @@ if [ -z "$TMUX" ] && status --is-login
     end
     eval (source /tmp/anyenv_init.cache)
 
-    set -x PYENV_ROOT $HOME/.pyenv
+    set -x PYENV_ROOT $HOME/.anyenv/envs/pyenv
     # fish_user_pathsに設定したらダメっぽい
     # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     set -x PATH $PYENV_ROOT/bin $PATH

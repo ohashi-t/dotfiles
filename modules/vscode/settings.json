@@ -7,7 +7,7 @@
         "**/.git": false
     },
     "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "~/.vimrc",
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/my_vscode/init.vim",
     "files.watcherExclude": {
         "**": true
     },

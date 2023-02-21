@@ -26,7 +26,6 @@ font:
   size: 13.0
   offset:
     y: 1
-  use_thin_strokes: true
 
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
