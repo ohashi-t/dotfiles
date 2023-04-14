@@ -82,6 +82,12 @@ repo = 'tpope/vim-rails'
 repo = 'tpope/vim-bundler'
 
 [[plugins]]
+repo = 'github/copilot.vim'
+# hook_source = '''
+# source ~/.config/nvim/plugins/copilot.vim
+# '''
+
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 branch = 'release'
 build = 'coc#util#install()'

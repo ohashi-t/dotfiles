@@ -1,5 +1,7 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+let g:copilot_node_command = '/usr/local/bin/node'
+let g:node_host_prog = '/usr/local/bin/node'
 
 if &compatible
   set nocompatible
@@ -31,3 +33,5 @@ endif
 
 source ~/.vimrc
 source ~/.config/nvim/my_session.vim
+
+source ~/.config/nvim/toml/dein_lazy.toml

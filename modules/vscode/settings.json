@@ -12,5 +12,6 @@
         "**": true
     },
     "files.autoSave": "afterDelay",
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "editor.inlineSuggest.enabled": true
 }
