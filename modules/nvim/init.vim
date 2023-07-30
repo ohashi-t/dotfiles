@@ -31,7 +31,8 @@ if dein#check_install()
   call dein#install()
 endif
 
+inoremap ‘ <Plug>(copilot-next)
+inoremap “ <Plug>(copilot-previous)
+
 source ~/.vimrc
 source ~/.config/nvim/my_session.vim
-
-source ~/.config/nvim/toml/dein_lazy.toml
