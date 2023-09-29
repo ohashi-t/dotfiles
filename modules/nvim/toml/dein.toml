@@ -123,3 +123,6 @@ call submode#map('changetab', 'n', '', 'T', 'gT')
 
 [[plugins]]
 repo = 'dag/vim-fish'
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
