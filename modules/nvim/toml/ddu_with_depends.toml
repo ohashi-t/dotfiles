@@ -40,6 +40,9 @@ repo = 'kuuote/ddu-source-mr'
 
 [[plugins]]
 repo = 'lambdalisue/mr.vim'
+hook_add = '''
+let g:mr_disable_warning = 1
+'''
 
 [[plugins]]
 repo = 'Shougo/ddu-commands.vim'
