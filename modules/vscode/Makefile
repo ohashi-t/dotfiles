@@ -11,5 +11,6 @@ vscode-clean:
 
 .PHONY: vscode-install
 vscode-install:
+	mkdir -p $(VSCODE_DIR)
 	ln -sf $(SELF_VSCODE_DIR)/settings.json $(VSCODE_DIR)/settings.json
 	ln -sf $(SELF_VSCODE_DIR)/keybindings.json $(VSCODE_DIR)/keybindings.json

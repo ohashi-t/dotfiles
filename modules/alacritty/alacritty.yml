@@ -27,6 +27,11 @@ font:
   offset:
     y: 1
 
+shell:
+  program: /opt/homebrew/bin/fish
+  args:
+    - --login
+
 key_bindings:
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }

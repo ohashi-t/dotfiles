@@ -253,6 +253,7 @@ set -x DISABLE_SPRING 1
 set -x DISABLE_DATABASE_ENVIRONMENT_CHECK 1
 
 if [ -z "$TMUX" ] && status --is-login
+    set -x PATH /opt/homebrew/bin $PATH
     set -x PATH $HOME/.anyenv/bin $PATH
     if ! [ -f "/tmp/anyenv_init.cache" ]
         anyenv init - > /tmp/anyenv_init.cache
