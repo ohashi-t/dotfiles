@@ -225,7 +225,6 @@ end
 
 function peco_nvim_current_files
     ls -F | grep -v "/" | peco | xargs nvim
-
 end
 
 function pcp
