@@ -213,7 +213,7 @@ function glg_
     set -l branch_name (git br | fzf | xargs | sed "s/* //")
     echo "$branch_name"
     if [ $branch_name = (git branch --show-current) ]
-        git log   
+        git log
     else
         git log "$branch_name"
     end
@@ -224,7 +224,7 @@ function peco_cd_current_dir
 end
 
 function peco_nvim_current_files
-    ls -F | grep -v "/" | peco | xargs nvim    
+    ls -F | grep -v "/" | peco | xargs nvim
 
 end
 
@@ -235,7 +235,7 @@ end
 
 function tmux_setup
     # TODO[replace shell script]
-    
+
     # if [ -z "$IS_TMUX_STARTED" ]
 
     # if [ -z "$TMUX" ]
@@ -256,14 +256,9 @@ if [ -z "$TMUX" ] && status --is-login
     set -x PATH /opt/homebrew/bin $PATH
     set -x PATH $HOME/.anyenv/bin $PATH
     if ! [ -f "/tmp/anyenv_init.cache" ]
-        anyenv init - > /tmp/anyenv_init.cache
+        anyenv init - fish > /tmp/anyenv_init.cache
     end
     eval (source /tmp/anyenv_init.cache)
-
-    set -x PYENV_ROOT $HOME/.anyenv/envs/pyenv
-    # fish_user_pathsに設定したらダメっぽい
-    # set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-    set -x PATH $PYENV_ROOT/bin $PATH
 
     #if [ -d "$HOME/.local/share/vim-lsp-settings/servers/solargraph" ]
     #    set -x SOLARGRAPH_PATH $HOME/.local/share/vim-lsp-settings/servers/solargraph
@@ -272,14 +267,6 @@ if [ -z "$TMUX" ] && status --is-login
     if [ -d "$HOME/.cache/custom_bin" ]
         set -x PATH $HOME/.cache/custom_bin $PATH
     end
-
-    #status is-interactive; and pyenv init --path | source
-    if ! [ -f "/tmp/pyenv_init.cache" ]
-        pyenv init --path | source
-        pyenv init - > /tmp/pyenv_init.cache
-    end
-    source /tmp/pyenv_init.cache
-    #pyenv init - | source
 
     # set -x PATH $HOME/.npm-global/bin $PATH
     set -x PATH $HOME/.cargo/bin $PATH
