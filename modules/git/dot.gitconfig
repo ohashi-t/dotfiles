@@ -1,0 +1,38 @@
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+    quotepath = off
+    ignorecase = false
+    safecrlf = true
+    autocrlf = false
+    hooksPath = ~/.config/git/hooks
+
+[alias]
+    st = status
+    br = branch
+    co = commit
+    ch = checkout
+    ad = add
+
+[user]
+	name = ohashi-t
+	email = 66351991+ohashi-t@users.noreply.github.com
+	name = Ohashi
+
+[ghq]
+    root = ~/.ghq
+
+[fetch]
+    prune = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[pull]
+	ff = only
+
+[init]
+  defaultBranch = main
