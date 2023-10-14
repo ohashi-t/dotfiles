@@ -1,11 +1,25 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-let g:copilot_node_command = '/usr/local/bin/node'
-let g:node_host_prog = '/usr/local/bin/node'
+" let g:copilot_node_command = '/usr/local/bin/node'
+" let g:node_host_prog = '/usr/local/bin/node'
 
-if &compatible
-  set nocompatible
-endif
+" 以下の記述が遅いので要修正
+" let $CACHE = expand('~/.cache')
+" if !($CACHE->isdirectory())
+"   call mkdir($CACHE, 'p')
+" endif
+" if &runtimepath !~# '/dein.vim'
+"   let s:dir = 'dein.vim'->fnamemodify(':p')
+"   if !(s:dir->isdirectory())
+"     let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+"     if !(s:dir->isdirectory())
+"       execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+"     endif
+"   endif
+"   execute 'set runtimepath^='
+"     \ .. s:dir->fnamemodify(':p')->substitute('[/\\]$', '', '')
+" endif
+
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
