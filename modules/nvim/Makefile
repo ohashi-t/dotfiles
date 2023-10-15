@@ -12,7 +12,7 @@ SELF_NVIM_PLUGIN_FILES := $(wildcard $(SELF_NVIM_PLUGIN_DIR)/*)
 SELF_NVIM_SNIPPET_FILES := $(wildcard $(SELF_NVIM_SNIPPET_DIR)/*)
 SELF_NVIM_TOML_FILES := $(wildcard $(SELF_NVIM_TOML_DIR)/*)
 
-NVIM_DEIN_URL = https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+NVIM_DEIN_URL = https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh
 
 CLEAN_TARGETS += nvim-clean
 INSTALL_TARGETS += nvim-install
