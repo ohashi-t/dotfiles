@@ -6,7 +6,7 @@
     "files.exclude": {
         "**/.git": false
     },
-    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/my_vscode/init.vim",
     "files.watcherExclude": {
         "**": true
