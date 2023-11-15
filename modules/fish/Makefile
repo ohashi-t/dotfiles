@@ -11,4 +11,5 @@ fish-shell-clean:
 
 .PHONY: fish-shell-install
 fish-shell-install:
-		ln -sf $(SELF_FISH_DIR)/config.fish $(FISH_DIR)/config.fish
+	mkdir -p $(FISH_DIR)
+	ln -sf $(SELF_FISH_DIR)/config.fish $(FISH_DIR)/config.fish

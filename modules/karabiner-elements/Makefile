@@ -37,4 +37,6 @@ karabiner-clean:
 
 .PHONY: karabiner-install
 karabiner-install: $(KARABINER_TARGETS)
+	mkdir -p $(KARABINER_DIR)
+	mkdir -p $(COMPLEX_MODIFICATIONS_DIR)
 	ln -sf $(SELF_KARABINER_DIR)/karabiner.json $(KARABINER_DIR)/karabiner.json
