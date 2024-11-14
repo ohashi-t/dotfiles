@@ -34,15 +34,6 @@ hi MatchParen ctermfg=200 ctermbg=0
 " inoremapにしたいけどleximaの<BS>でカッコのペア削除されなかったので
 imap <C-h> <BS>
 
-noremap <Down> <Nop>
-noremap <Up> <Nop>
-noremap <Right> <Nop>
-noremap <Left> <Nop>
-inoremap <Down> <Nop>
-inoremap <Up> <Nop>
-inoremap <Right> <Nop>
-inoremap <Left> <Nop>
-
 " 以下画面中央の行にフォーカスするための設定集
 augroup StartAtMiddleLine
   au VimEnter * normal zz
@@ -75,11 +66,6 @@ nnoremap / /\V
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>
 inoremap <Esc><Esc> <Esc>
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-if !has('nvim')
-  nnoremap <C-n> gt
-  nnoremap <C-p> gT
-endif
 
 if executable('rg')
   let &grepprg = 'rg --vimgrep --hidden'
@@ -97,3 +83,8 @@ augroup END
 
 "grep結果を自動的にquickfixへ出力・表示する
 "autocmd QuickFixCmdPost *grep* cwindow
+
+"if !has('nvim')
+"  nnoremap <C-n> gt
+"  nnoremap <C-p> gT
+"endif
