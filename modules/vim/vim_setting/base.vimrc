@@ -25,14 +25,11 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-"set timeoutlen=10
+set timeoutlen=10
 hi MatchParen ctermfg=200 ctermbg=0 
 
 " fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
 " set autochdir
-
-
-
 
 " inoremapにしたいけどleximaの<BS>でカッコのペア削除されなかったので
 imap <C-h> <BS>
@@ -74,8 +71,6 @@ nnoremap x "_x
 vnoremap x "_x
 
 nnoremap / /\V
-
-nnoremap Y y$
 
 cnoremap <Esc><Esc> <Esc>
 vnoremap <Esc><Esc> <Esc>

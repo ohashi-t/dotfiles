@@ -19,6 +19,7 @@
 	email = 66351991+ohashi-t@users.noreply.github.com
 
 [ghq]
+    root = ~/ghq
     root = ~/.ghq
 
 [fetch]
