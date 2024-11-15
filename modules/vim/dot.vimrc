@@ -1,6 +1,7 @@
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 filetype plugin indent on
+let g:netrw_liststyle=3    "tree view.
 runtime macros/matchit.vim
 
 set shell=/bin/bash
