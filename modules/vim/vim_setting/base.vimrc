@@ -25,7 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-"set timeoutlen=10
+set timeoutlen=500 "短すぎるとprefixが適用出来ない。。。
 hi MatchParen ctermfg=200 ctermbg=0 
 
 " fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
@@ -62,10 +62,6 @@ nnoremap x "_x
 vnoremap x "_x
 
 nnoremap / /\V
-
-cnoremap <Esc><Esc> <Esc>
-vnoremap <Esc><Esc> <Esc>
-inoremap <Esc><Esc> <Esc>
 
 if executable('rg')
   let &grepprg = 'rg --vimgrep --hidden'
