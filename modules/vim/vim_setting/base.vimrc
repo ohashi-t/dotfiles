@@ -25,7 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-set timeoutlen=500 "短すぎるとprefixが適用出来ない。。。
+"set timeoutlen=500 "短すぎるとprefixが適用出来ない。500位が丁度良い？
 hi MatchParen ctermfg=200 ctermbg=0 
 
 " fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
