@@ -61,7 +61,7 @@ function infinity_cd
         if test -f "$target_content"
             echo "file selected."
             commandline -r ''
-            commandline "nvim $target_content"
+            commandline "vim $target_content"
         else
             echo "changing directory failed..."
         end

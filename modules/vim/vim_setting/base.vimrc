@@ -25,7 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set helplang=ja
-set timeoutlen=10
+"set timeoutlen=10
 hi MatchParen ctermfg=200 ctermbg=0 
 
 " fzfを<C-c>でキャンセルした際にカレントファイルのパスに戻ってしまうので解除
