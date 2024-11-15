@@ -371,9 +371,6 @@
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
-                                    },
-                                    {
-                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -404,9 +401,6 @@
                                     },
                                     {
                                         "key_code": "japanese_eisuu"
-                                    },
-                                    {
-                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
